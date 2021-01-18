@@ -27,7 +27,7 @@ interface VLoanPoolInterface {
 
 
     //Functions
-    function initiate(uint amount, uint endBlock, uint feesAmount) external returns(bool);
-    function expandLoan(uint newEndBlock, uint additionalFeesAmount) external returns(bool);
+    function initiate(uint amount, uint feesAmount) external returns(bool);
+    function closeLoan(address borrower) external returns(bool);
     function killLoan(address killer) external returns(bool);
 }

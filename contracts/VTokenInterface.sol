@@ -14,7 +14,9 @@ interface VTokenInterface is ERC20Interface {
     /* @notice Event when a loan is started */
     event Borrow(address user, uint amount, address vToken);
     /* @notice Event when a loan is ended */
-    event ReturnBorrow(address user, uint amount, address vToken);
+    event CloseLoan(address user, uint amount, address vToken);
+    /* @notice Event interest index is updated */
+    event UpdateInterest(uint cashPrior, uint interestAccumulated, uint borrowIndex, uint totalBorrows, address vToken);
     /* @notice (Admin) Event when the contract admin is updated */
     event newAdmin(address oldAdmin, address newAdmin);
     /* @notice (Admin) Event when the contract controller is updated */
@@ -30,8 +32,18 @@ interface VTokenInterface is ERC20Interface {
 
 
     function getLoansPools() external view returns(address [] memory);
-    function getLoansByBorrower(address borrower) external view returns(address [] memory);
+    function getLoansByBorrowerStored(address borrower) external view returns(address [] memory);
+    function getLoansByBorrower(address borrower) external returns(address [] memory);
 
+    function borrowRatePerBlock() external view returns (uint);
+    function supplyRatePerBlock() external view returns (uint);
+    function totalBorrowsCurrent() external returns (uint);
+
+    function exchangeRateCurrent() external returns (uint);
+    function exchangeRateStored() external view returns (uint);
+
+    function getCash() external view returns (uint);
+    function updateInterest() external returns (uint);
 
     // Admin Functions
     function setNewAdmin(address payable newAdmin) external;
@@ -39,5 +51,5 @@ interface VTokenInterface is ERC20Interface {
     function setNewController(PaladinControllerInterface newController) external;
 
     //function setNewSwapModule(SwapModule newSwapModule) external; -> TODO
-    function setNewStablecoin(address stablecoin) external;
+    function setNewStablecoin(address newStablecoin) external;
 }

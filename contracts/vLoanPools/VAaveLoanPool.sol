@@ -8,16 +8,13 @@ contract VAaveLoanPool is VLoanPoolInterface {
 
     //Varaibles
     address public _underlying;
-    uint public _underlyingAmount;
+    uint public _amount;
 
     address payable public _borrower;
     address payable public _motherPool;
 
-    uint public _startBlock;
-    uint public _endBlock;
-
     address public _feesToken;
-    uint private _feesAmount;
+    uint public _feesAmount;
 
     //Functions
     constructor(address payable motherPool, address payable borrower, address underlying, address feesToken){
@@ -27,12 +24,12 @@ contract VAaveLoanPool is VLoanPoolInterface {
         _feesToken = feesToken;
     }
 
-    function initiate(uint amount, uint endBlock, uint feesAmount) external override returns(bool){
+    function initiate(uint amount, uint feesAmount) external override returns(bool){
         require(msg.sender == _motherPool, "Only the origin Pool can call this function");
-        _initiate(amount, endBlock, feesAmount);
+        _initiate(amount, feesAmount);
     }
 
-    function _initiate(uint amount, uint endBlock, uint feesAmount) internal {
+    function _initiate(uint amount, uint feesAmount) internal {
         
     }
 
@@ -40,12 +37,12 @@ contract VAaveLoanPool is VLoanPoolInterface {
 
     }
 
-    function expandLoan(uint newEndBlock, uint additionalFeesAmount) external override returns(bool){
+    function closeLoan(address borrower) external override returns(bool){
         require(msg.sender == _motherPool, "Only the origin Pool can call this function");
-        return _expand(newEndBlock, additionalFeesAmount);
+        return _close(borrower);
     }
 
-    function _expand(uint newEndBlock, uint additionalFeesAmount) internal returns(bool) {
+    function _close(address borrower) internal returns(bool) {
         
         return true;
     }

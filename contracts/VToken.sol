@@ -3,13 +3,26 @@ pragma solidity ^0.7.6;
 
 import "./utils/SafeMath.sol";
 import "./VTokenInterface.sol";
-import "./VLoanPoolInterface.sol";
+import "./vLoanPools/VLoanPoolInterface.sol";
 import "./PaladinControllerInterface.sol";
 import "./InterestCalculator.sol";
-import "../utils/IERC20.sol";
+import "./utils/IERC20.sol";
 
 contract VToken is VTokenInterface {
     using SafeMath for uint;
+
+    //Struct
+
+    struct Borrow {
+        address payable borrower;
+        address payable loanPool;
+        uint amount;
+        address underlying;
+        address feesTokens;
+        uint feesAmount;
+        uint feesUsed;
+    }
+
 
     //ERC20 Variables & Mappings
     string public _name;
@@ -26,11 +39,20 @@ contract VToken is VTokenInterface {
 
     address payable private _admin;
 
-    address [] internal _loanPools;
-
     uint public _totalReserve;
     uint public _totalBorrowed;
-    mapping (address => address) internal _borrows;
+    uint public _totalSupply;
+
+    uint internal constant maxBorrowRate = 0; //to change
+    uint internal constant maxReserveFactor = 0; //to change
+
+    uint internal initialExchangeRate;
+    uint public reserveFactor;
+    uint public accrualBlockNumber;
+    uint public borrowIndex;
+
+    mapping (address => address) internal _usersByBorrows;
+    Borrow[] internal _borrows;
 
     PaladinControllerInterface public _controller;
 
@@ -50,7 +72,7 @@ contract VToken is VTokenInterface {
     }
 
     //Functions
-    constructor(string name, string symbol, uint decimals, PaladinControllerInterface controller, address payable admin, address underlying, address stableCoin){
+    constructor(string memory name, string memory symbol, uint decimals, PaladinControllerInterface controller, address payable admin, address underlying, address stableCoin){
 
     }
 
@@ -82,7 +104,7 @@ contract VToken is VTokenInterface {
     }
 
     //Return the balance of this contract for the underlying asset
-    function _underlyingBalance() internal view override returns(uint){
+    function _underlyingBalance() internal view returns(uint){
         
     }
     
@@ -121,7 +143,7 @@ contract VToken is VTokenInterface {
         
     }
 
-    function _deposit(address dest, address loanPool, address feeToken, uint feeAmount)) internal preventReentry returns(uint){
+    function _deposit(address dest, address loanPool, address feeToken, uint feeAmount) internal preventReentry returns(uint){
         
     }
     
@@ -136,13 +158,60 @@ contract VToken is VTokenInterface {
 
 
     function getLoansPools() external view override returns(address [] memory){
-        return _loanPools;
-    }
-    
-    function getLoansByBorrower(address borrower) external view override returns(address [] memory){
         
     }
     
+    function getLoansByBorrowerStored(address borrower) external view override returns(address [] memory){
+
+    }
+
+    function getLoansByBorrower(address borrower) external override preventReentry returns(address [] memory){
+
+    }
+    
+
+    function borrowRatePerBlock() external view override returns (uint){
+
+    }
+    
+    function supplyRatePerBlock() external view override returns (uint){
+
+    }
+    
+    function totalBorrowsCurrent() external override preventReentry returns (uint){
+
+    }
+    
+    function _exchangeRate() internal returns (uint){
+
+    }
+
+    function exchangeRateCurrent() external override preventReentry returns (uint){
+
+    }
+    
+    function exchangeRateStored() external view override returns (uint){
+
+    }
+    
+    function _getCash() internal returns (uint){
+
+    }
+
+    function getCash() external view override returns (uint){
+
+    }
+
+    function _updateInterest() internal returns (uint){
+        
+    }
+    
+    function updateInterest() external override returns (uint){
+
+    }
+    
+
+
 
 
     // Admin Functions
@@ -155,7 +224,7 @@ contract VToken is VTokenInterface {
 
     function setNewController(PaladinControllerInterface newController) external override {
         require(msg.sender == _admin, "Admin function");
-        
+        _controller = newController;
     }
     
 
@@ -165,9 +234,9 @@ contract VToken is VTokenInterface {
     } -> TODO */
 
 
-    function setNewStablecoin(address stablecoin) external override {
+    function setNewStablecoin(address newStablecoin) external override {
         require(msg.sender == _admin, "Admin function");
-        
+        _stablecoinAddress = newStablecoin;
     }
     
 
