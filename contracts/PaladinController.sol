@@ -3,86 +3,88 @@ pragma solidity ^0.7.6;
 
 import "./utils/SafeMath.sol";
 import "./PaladinControllerInterface.sol";
+import "./VTokenInterface.sol";
 
 contract PaladinController is PaladinControllerInterface {
     using SafeMath for uint;
+    
 
-    address payable private _admin;
+    //Contract admin
+    address payable internal admin;
 
-    address[] public _vTokens;
+    //List of all the vToken contracts
+    address[] public vTokens;
 
 
-    function _isVToken() internal returns(bool){
-        
+    constructor(){
+        admin = msg.sender;
+    }
+
+    function _isVToken(address token) internal view returns(bool){
+        //Check if the given address is in the vToken list
+        for(uint i = 0; i < vTokens.length; i++){
+            if(vTokens[i] == token){
+                return true;
+            }
+        }
+        return false;
     }
 
 
     function getVTokens() external view override returns(address[] memory){
-
+        return vTokens;
     }
 
     function addNewVToken(address vToken) external override returns(bool){
-        require(msg.sender == _admin, "Admin function");
-        
+        //Add a new address to the vToken list
+        require(msg.sender == admin, "Admin function");
+        vTokens.push(vToken);
+        return true;
     }
     
-    function removeVToken(address vToken) external override returns(bool){
-        require(msg.sender == _admin, "Admin function");
-        
-    }
     
-
-    function getLoansForBorrower(address borrower) external override returns(address[] memory){
-
-    }
-    
-
+    //Admin function
     function setNewAdmin(address payable newAdmin) external override returns(bool){
-        require(msg.sender == _admin, "Admin function");
-        
+        require(msg.sender == admin, "Admin function");
+        admin = newAdmin;
+        return true;
+    }
+    
+    
+
+    function withdrawPossible(address vToken, uint amount) external view override returns(bool){
+        //Get the underlying balance of the vToken contract to check if the action is possible
+        VTokenInterface _vToken = VTokenInterface(vToken);
+        return(_vToken.getCash() >= amount);
+    }
+    
+    function borrowPossible(address vToken, uint amount) external view override returns(bool){
+        //Get the underlying balance of the vToken contract to check if the action is possible
+        VTokenInterface _vToken = VTokenInterface(vToken);
+        return(_vToken.getCash() >= amount);
     }
     
 
-    function deposit(address vToken, address dest, uint amount) external override returns(uint){
-
+    function depositVerify(address vToken, address dest, uint amount) external view override returns(bool){
+        //Check if the minting succeeded
+        VTokenInterface _vToken = VTokenInterface(vToken);
+        return(amount == _vToken.balanceOf(dest));
     }
     
-    function withdraw(address vToken, address dest, uint amount) external override returns(uint){
-
-    }
-    
-    function borrow(address vToken, address dest, uint amount, address feeToken, uint feeAmount) external override returns(uint){
-
-    }
-    
-    function expandBorrow(address vToken, address dest, address loanPool, address feeToken, uint feeAmount) external override returns(uint){
-
-    }
-    
-    function killBorrow(address vToken, address killer, address loanPool) external override returns(uint){
-
-    }
-    
-
-    function withdrawPossible(address vToken, uint amount) external override returns(bool){
-
-    }
-    
-    function borrowPossible(address vToken, uint amount, address feeToken, uint feeAmount) external override returns(bool){
-
-    }
-    
-
-    function depositVerify(address vToken, address dest, uint amount) external override returns(bool){
-
-    }
-    
-    function withdrawVerify(address vToken, address dest, uint amount) external override returns(bool){
-
-    }
-    
-    function borrowVerify(address vToken, address dest, uint amount, address loanPool) external override returns(bool){
-
+    function borrowVerify(address vToken, address borrower, uint amount, uint feesAmount, address loanPool) external view override returns(bool){
+        //Check if the borrow was successful
+        VTokenInterface _vToken = VTokenInterface(vToken);
+        (
+            address payable _borrower,
+            address payable _loanPool,
+            uint _amount,
+            address _underlying,
+            address _feesTokens,
+            uint _feesAmount,
+            uint _feesUsed,
+            bool _closed
+        ) = _vToken.getBorrowData(loanPool);
+        return(borrower == _borrower && amount == _amount && feesAmount == _feesAmount && _closed == false);
     }
     
 }
