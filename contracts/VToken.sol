@@ -6,7 +6,7 @@ import "./utils/SafeMath.sol";
 import "./VTokenInterface.sol";
 import "./vLoanPools/VLoanPoolInterface.sol";
 import "./PaladinControllerInterface.sol";
-import "./InterestCalculator.sol";
+import "./InterestInterface.sol";
 import "./utils/IERC20.sol";
 import "./utils/AggregatorV3Interface.sol";
 
@@ -54,6 +54,7 @@ contract VToken is VTokenInterface {
 
     //Modules
     PaladinControllerInterface public controller;
+    InterestInterface internal interestModule;
 
 
     modifier preventReentry() {
@@ -70,7 +71,8 @@ contract VToken is VTokenInterface {
         string memory _symbol, 
         uint _decimals, 
         address _controller, 
-        address _underlying
+        address _underlying,
+        address _interestModule
     ){
         //Set admin & ERC20 values
         admin = msg.sender;
@@ -83,6 +85,7 @@ contract VToken is VTokenInterface {
         underlying = _underlying;
         borrowCount = 0;
         accrualBlockNumber = block.number;
+        interestModule = InterestInterface(_interestModule);
     }
 
     function transfer(address dest, uint amount) external override returns(bool){
@@ -340,11 +343,11 @@ contract VToken is VTokenInterface {
     
 
     function borrowRatePerBlock() external view override returns (uint){
-
+        return interestModule.getBorrowRate(_underlyingBalance(), totalBorrowed, totalReserve);
     }
     
     function supplyRatePerBlock() external view override returns (uint){
-
+        return interestModule.getSupplyRate(_underlyingBalance(), totalBorrowed, totalReserve, reserveFactor);
     }
     
     function totalBorrowsCurrent() external override preventReentry returns (uint){
@@ -353,7 +356,15 @@ contract VToken is VTokenInterface {
     }
     
     function _exchangeRate() internal view returns (uint){
-        //TODO
+        if(totalSupply == 0){
+            return initialExchangeRate;
+        }
+        else{
+            uint _cash = _underlyingBalance();
+            uint _availableCash = _cash.add(totalBorrowed).sub(totalReserve);
+            uint _exchRate = _availableCash.mul(1e18).div(totalSupply);
+            return _exchRate;
+        }
     }
 
     function exchangeRateCurrent() external override preventReentry returns (uint){
@@ -394,6 +405,11 @@ contract VToken is VTokenInterface {
         require(msg.sender == admin, "Admin function");
         controller = PaladinControllerInterface(_newController);
     }
+        
 
+    function setNewInterestModule(address _interestModule) external override {
+        require(msg.sender == admin, "Admin function");
+        interestModule = InterestInterface(_interestModule);
+    }
 
 }

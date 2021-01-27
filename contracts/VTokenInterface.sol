@@ -81,5 +81,6 @@ interface VTokenInterface is ERC20Interface {
     function setNewAdmin(address payable _newAdmin) external;
 
     function setNewController(address _newController) external;
+    function setNewInterestModule(address _interestModule) external;
 
 }
