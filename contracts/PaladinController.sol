@@ -79,7 +79,6 @@ contract PaladinController is PaladinControllerInterface {
             address payable _loanPool,
             uint _amount,
             address _underlying,
-            address _feesTokens,
             uint _feesAmount,
             uint _feesUsed,
             bool _closed

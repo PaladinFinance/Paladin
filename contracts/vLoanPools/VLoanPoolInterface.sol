@@ -7,22 +7,13 @@ interface VLoanPoolInterface {
         address borrower,
         address underlying,
         uint amount,
-        uint startBlock,
-        uint endBlock
+        uint startBlock
     );
 
     event ExpandLoan(
         address borrower,
         address underlying,
-        uint oldEndBlock,
-        uint newEndBlock
-    );
-
-    event KillLoan(
-        address borrower,
-        address underlying,
-        address killer,
-        uint endBlock
+        uint addedFees
     );
 
 

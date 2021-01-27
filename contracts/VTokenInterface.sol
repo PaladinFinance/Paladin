@@ -14,9 +14,8 @@ interface VTokenInterface is ERC20Interface {
         address payable loanPool;
         uint amount;
         address underlying;
-        address feesTokens;
         uint feesAmount;
-        uint feesUsed;
+        uint borrowIndex;
         bool closed;
     }
 
@@ -40,8 +39,8 @@ interface VTokenInterface is ERC20Interface {
     //Functions
     function deposit(uint amount) external returns(uint);
     function withdraw(uint amount) external returns(uint);
-    function borrow(uint amount, address feeToken, uint feeAmount) external returns(uint);
-    function expandBorrow(address loanPool, address feeToken, uint feeAmount) external returns(uint);
+    function borrow(uint amount, uint feeAmount) external returns(uint);
+    function expandBorrow(address loanPool, uint feeAmount) external returns(uint);
     function closeBorrow(address loanPool) external returns(uint);
     function killBorrow(address loanPool) external returns(uint);
 
@@ -49,12 +48,20 @@ interface VTokenInterface is ERC20Interface {
     function getLoansPools() external view returns(address [] memory);
     function getLoansByBorrowerStored(address borrower) external view returns(address [] memory);
     function getLoansByBorrower(address borrower) external returns(address [] memory);
-    function getBorrowData(address _loanPool) external view returns(
+    function getBorrowDataStored(address __loanPool) external view returns(
+        address payable _borrower,
+        address payable _loanPool,
+        uint _amount,
+        address _underlying,
+        uint _feesAmount,
+        uint _feesUsed,
+        bool _closed
+    );
+    function getBorrowData(address _loanPool) external returns(
         address payable borrower,
         address payable loanPool,
         uint amount,
         address underlying,
-        address feesTokens,
         uint feesAmount,
         uint feesUsed,
         bool closed
@@ -75,9 +82,4 @@ interface VTokenInterface is ERC20Interface {
 
     function setNewController(address _newController) external;
 
-    //function setNewSwapModule(address _newSwapModule) external; -> TODO
-    function setNewStablecoin(address _newStablecoin) external;
-
-    function getUnderlyingPrice() external view returns(uint);
-    function setNewOracle(address _oracleAddress) external;
 }

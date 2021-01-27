@@ -9,7 +9,6 @@ import "./PaladinControllerInterface.sol";
 import "./InterestCalculator.sol";
 import "./utils/IERC20.sol";
 import "./utils/AggregatorV3Interface.sol";
-import "./SwapModule.sol";
 
 
 //Depending on the pool :
@@ -56,11 +55,6 @@ contract VToken is VTokenInterface {
     //Modules
     PaladinControllerInterface public controller;
 
-    address internal stablecoinAddress;
-    SwapModule internal swapModule;
-    
-    AggregatorV3Interface internal oracle;
-
 
     modifier preventReentry() {
         //modifier to prevent reentry in internal functions
@@ -76,10 +70,7 @@ contract VToken is VTokenInterface {
         string memory _symbol, 
         uint _decimals, 
         address _controller, 
-        address _underlying, 
-        address _stableCoin, 
-        address _oracleAddress,
-        address _swapModule
+        address _underlying
     ){
         //Set admin & ERC20 values
         admin = msg.sender;
@@ -90,12 +81,8 @@ contract VToken is VTokenInterface {
         //Set inital values & modules
         controller = PaladinControllerInterface(_controller);
         underlying = _underlying;
-        stablecoinAddress = _stableCoin;
         borrowCount = 0;
         accrualBlockNumber = block.number;
-
-        oracle = AggregatorV3Interface(_oracleAddress);
-        swapModule = SwapModule(_swapModule);
     }
 
     function transfer(address dest, uint amount) external override returns(bool){
@@ -241,19 +228,19 @@ contract VToken is VTokenInterface {
 
 
 
-    function borrow(uint amount, address feeToken, uint feeAmount) external override returns(uint){
+    function borrow(uint amount, uint feeAmount) external override returns(uint){
         _updateInterest();
-        return _borrow(msg.sender, amount, feeToken, feeAmount);
+        return _borrow(msg.sender, amount, feeAmount);
     }
 
-    function _borrow(address dest, uint amount, address feeToken, uint feeAmount) internal preventReentry returns(uint){
+    function _borrow(address dest, uint amount, uint feeAmount) internal preventReentry returns(uint){
         require(amount < _underlyingBalance(), "Not enough funds in the pool");
         //TODO
     }
     
-    function expandBorrow(address loanPool, address feeToken, uint feeAmount) external override returns(uint){
+    function expandBorrow(address loanPool, uint feeAmount) external override returns(uint){
         _updateInterest();
-        return _expandBorrow(loanPool, feeToken, feeAmount);
+        return _expandBorrow(loanPool, feeAmount);
     }
     
     function killBorrow(address loanPool) external override returns(uint){
@@ -266,7 +253,7 @@ contract VToken is VTokenInterface {
         return _closeBorrow(loanPool);
     }
 
-    function _expandBorrow(address loanPool, address feeToken, uint feeAmount) internal preventReentry returns(uint){
+    function _expandBorrow(address loanPool, uint feeAmount) internal preventReentry returns(uint){
         //TODO
     }
 
@@ -299,12 +286,36 @@ contract VToken is VTokenInterface {
         return borrowsByUser[borrower];
     }
 
-    function getBorrowData(address __loanPool) external view override returns(
+    function getBorrowDataStored(address __loanPool) external view override returns(
         address payable _borrower,
         address payable _loanPool,
         uint _amount,
         address _underlying,
-        address _feesTokens,
+        uint _feesAmount,
+        uint _feesUsed,
+        bool _closed
+    ){
+        return _getBorrowData(__loanPool);
+    }
+
+    function getBorrowData(address __loanPool) external override returns(
+        address payable _borrower,
+        address payable _loanPool,
+        uint _amount,
+        address _underlying,
+        uint _feesAmount,
+        uint _feesUsed,
+        bool _closed
+    ){
+        require(_updateInterest());
+        return _getBorrowData(__loanPool);
+    }
+
+    function _getBorrowData(address __loanPool) internal view returns(
+        address payable _borrower,
+        address payable _loanPool,
+        uint _amount,
+        address _underlying,
         uint _feesAmount,
         uint _feesUsed,
         bool _closed
@@ -312,15 +323,16 @@ contract VToken is VTokenInterface {
         //Return the data inside a Borrow struct
         for(uint i = 0; i < borrowCount; i++){
             if(borrows[i].loanPool == __loanPool){
+                Borrow memory __borrow = borrows[i];
+                uint feesUsed = __borrow.amount.sub(__borrow.amount.mul(__borrow.borrowIndex).div(borrowIndex));
                 return (
-                    borrows[i].borrower,
-                    borrows[i].loanPool,
-                    borrows[i].amount,
-                    borrows[i].underlying,
-                    borrows[i].feesTokens,
-                    borrows[i].feesAmount,
-                    borrows[i].feesUsed,
-                    borrows[i].closed
+                    __borrow.borrower,
+                    __borrow.loanPool,
+                    __borrow.amount,
+                    __borrow.underlying,
+                    __borrow.feesAmount,
+                    feesUsed,
+                    __borrow.closed
                 );
             }
         }
@@ -336,6 +348,7 @@ contract VToken is VTokenInterface {
     }
     
     function totalBorrowsCurrent() external override preventReentry returns (uint){
+        _updateInterest();
         return totalBorrowed;
     }
     
@@ -355,10 +368,6 @@ contract VToken is VTokenInterface {
 
     function getCash() external view override returns (uint){
         return _underlyingBalance();
-    }
-
-    function _updateBorrows() internal returns (bool){
-        //TODO
     }
 
     function _updateInterest() internal returns (bool){
@@ -385,40 +394,6 @@ contract VToken is VTokenInterface {
         require(msg.sender == admin, "Admin function");
         controller = PaladinControllerInterface(_newController);
     }
-    
 
-    /*function setNewSwapModule(address _newSwapModule) external override {
-        require(msg.sender == _admin, "Admin function");
-        swapModule = SwapModule(_newSwapModule);
-    } -> TODO */
-
-
-    function setNewStablecoin(address _newStablecoin) external override {
-        require(msg.sender == admin, "Admin function");
-        stablecoinAddress = _newStablecoin;
-    }
-
-
-    //Oracle functions
-    function _getUnderlyingPrice() internal view returns(uint){
-        (
-            uint80 roundID, 
-            int price,
-            uint startedAt,
-            uint timeStamp,
-            uint80 answeredInRound
-        ) = oracle.latestRoundData();
-        return uint(price);
-    }
-
-    function getUnderlyingPrice() external view override returns(uint){
-        return _getUnderlyingPrice();
-    }
-
-    function setNewOracle(address _oracleAddress) external override {
-        require(msg.sender == admin, "Admin function");
-        oracle = AggregatorV3Interface(_oracleAddress);
-    }
-    
 
 }

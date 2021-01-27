@@ -16,16 +16,14 @@ contract VAaveLoanPool is VLoanPoolInterface {
     address payable public borrower;
     address payable public motherPool;
 
-    address public feesToken;
     uint public feesAmount;
 
     //Functions
-    constructor(address payable _motherPool, address payable _borrower, address _underlying, address _feesToken){
+    constructor(address payable _motherPool, address payable _borrower, address _underlying){
         //Set up initial values
         motherPool = _motherPool;
         borrower = _borrower;
         underlying = _underlying;
-        feesToken = _feesToken;
     }
 
     function initiate(uint _amount, uint _feesAmount) external override returns(bool){
@@ -42,6 +40,7 @@ contract VAaveLoanPool is VLoanPoolInterface {
         //Delegate governance power : AAVE version
         IGovernancePowerDelegationToken govToken = IGovernancePowerDelegationToken(underlying);
         govToken.delegate(borrower);
+        emit StartLoan(borrower, underlying, amount, block.number);
     }
 
     function expand(uint _newFeesAmount) external override returns(bool){
@@ -53,6 +52,7 @@ contract VAaveLoanPool is VLoanPoolInterface {
     function _expand(uint _newFeesAmount) internal {
         //Update the amount of paid fees if the loan is expanded
         feesAmount = feesAmount.add(_newFeesAmount);
+        emit ExpandLoan(borrower, underlying, _newFeesAmount);
     }
 
     function closeLoan(address _borrower, uint _usedAmount) external override {
@@ -61,16 +61,14 @@ contract VAaveLoanPool is VLoanPoolInterface {
     }
 
     function _close(address _borrower, uint _usedAmount) internal {
-        //Return the borrowed amount to the pool
         IERC20 _underlying = IERC20(underlying);
-        _underlying.transfer(motherPool, amount);
         
-        //Send the amount of fees used to the pool (to be swaped)
-        //Then return the remaining amount to the borrower
+        //Return the remaining amount to the borrower
+        //Then return the borrowed amount and the used fees to the pool
         uint _returnAmount = feesAmount.sub(_usedAmount);
-        IERC20 _stablecoin = IERC20(feesToken);
-        _stablecoin.transfer(_borrower, _returnAmount);
-        _stablecoin.transfer(motherPool, _usedAmount);
+        uint _keepAmount = amount.add(_usedAmount);
+        _underlying.transfer(_borrower, _returnAmount);
+        _underlying.transfer(motherPool, _keepAmount);
 
         //Destruct the contract (to get gas refund on the transaction)
         selfdestruct(motherPool);
@@ -82,18 +80,16 @@ contract VAaveLoanPool is VLoanPoolInterface {
     }
 
     function _kill(address _killer, uint killerRatio) internal {
-        //Return the borrowed amount to the pool
         IERC20 _underlying = IERC20(underlying);
-        _underlying.transfer(motherPool, amount);
         
-        //Send a portion of the fees to the killer, depending on the ratio given
-        //And send the rest of the fees to the main pool
+        //Send the killer reward to the killer
+        //Then return the borrowed amount and the fees to the pool
         uint _killerAmount = feesAmount.mul(killerRatio).div(100000);
-        uint _poolAmount = feesAmount.sub(_killerAmount);
-        IERC20 _stablecoin = IERC20(feesToken);
-        _stablecoin.transfer(_killer, _killerAmount);
-        _stablecoin.transfer(motherPool, _poolAmount);
-        
+        uint _balance = amount.add(feesAmount);
+        uint _poolAmount = _balance.sub(_killerAmount);
+        _underlying.transfer(_killer, _killerAmount);
+        _underlying.transfer(motherPool, _poolAmount);
+
         //Destruct the contract (to get gas refund on the transaction)
         selfdestruct(motherPool);
     }
