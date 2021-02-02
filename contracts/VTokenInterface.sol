@@ -7,18 +7,6 @@ import "./ERC20Interface.sol";
 
 interface VTokenInterface is ERC20Interface {
 
-    //Struct
-
-    struct Borrow {
-        address payable borrower;
-        address payable loanPool;
-        uint amount;
-        address underlying;
-        uint feesAmount;
-        uint borrowIndex;
-        bool closed;
-    }
-
     //Events
     /** @notice Event when an user deposit tokens in the pool */
     event Deposit(address user, uint amount, address vToken);
@@ -28,8 +16,6 @@ interface VTokenInterface is ERC20Interface {
     event NewBorrow(address user, uint amount, address vToken);
     /** @notice Event when a loan is ended */
     event CloseLoan(address user, uint amount, address vToken);
-    /** @notice Event interest index is updated */
-    event UpdateInterest(uint cashPrior, uint interestAccumulated, uint borrowIndex, uint totalBorrows, address vToken);
     /** @notice (Admin) Event when the contract admin is updated */
     event newAdmin(address oldAdmin, address newAdmin);
     /** @notice (Admin) Event when the contract controller is updated */
@@ -44,13 +30,12 @@ interface VTokenInterface is ERC20Interface {
     function closeBorrow(address loanPool) external returns(uint);
     function killBorrow(address loanPool) external returns(uint);
 
-
     function getLoansPools() external view returns(address [] memory);
     function getLoansByBorrowerStored(address borrower) external view returns(address [] memory);
     function getLoansByBorrower(address borrower) external returns(address [] memory);
     function getBorrowDataStored(address __loanPool) external view returns(
-        address payable _borrower,
-        address payable _loanPool,
+        address _borrower,
+        address _loanPool,
         uint _amount,
         address _underlying,
         uint _feesAmount,
@@ -58,8 +43,8 @@ interface VTokenInterface is ERC20Interface {
         bool _closed
     );
     function getBorrowData(address _loanPool) external returns(
-        address payable borrower,
-        address payable loanPool,
+        address borrower,
+        address loanPool,
         uint amount,
         address underlying,
         uint feesAmount,
@@ -74,13 +59,13 @@ interface VTokenInterface is ERC20Interface {
     function exchangeRateCurrent() external returns (uint);
     function exchangeRateStored() external view returns (uint);
 
-    function getCash() external view returns (uint);
-    function updateInterest() external returns (bool);
-
     // Admin Functions
     function setNewAdmin(address payable _newAdmin) external;
 
     function setNewController(address _newController) external;
     function setNewInterestModule(address _interestModule) external;
+
+    function addReserve(uint _amount) external;
+    function removeReserve(uint _amount) external;
 
 }

@@ -4,6 +4,8 @@ pragma solidity ^0.7.6;
 import "./utils/SafeMath.sol";
 import "./PaladinControllerInterface.sol";
 import "./VTokenInterface.sol";
+import "./VToken.sol";
+import "./utils/IERC20.sol";
 
 contract PaladinController is PaladinControllerInterface {
     using SafeMath for uint;
@@ -54,35 +56,39 @@ contract PaladinController is PaladinControllerInterface {
 
     function withdrawPossible(address vToken, uint amount) external view override returns(bool){
         //Get the underlying balance of the vToken contract to check if the action is possible
-        VTokenInterface _vToken = VTokenInterface(vToken);
-        return(_vToken.getCash() >= amount);
+        VToken _vToken = VToken(vToken);
+        IERC20 underlying = _vToken.underlying();
+        return(underlying.balanceOf(vToken) >= amount);
     }
     
     function borrowPossible(address vToken, uint amount) external view override returns(bool){
         //Get the underlying balance of the vToken contract to check if the action is possible
-        VTokenInterface _vToken = VTokenInterface(vToken);
-        return(_vToken.getCash() >= amount);
+        VToken _vToken = VToken(vToken);
+        IERC20 underlying = _vToken.underlying();
+        return(underlying.balanceOf(vToken) >= amount);
     }
     
 
     function depositVerify(address vToken, address dest, uint amount) external view override returns(bool){
         //Check if the minting succeeded
-        VTokenInterface _vToken = VTokenInterface(vToken);
-        return(amount == _vToken.balanceOf(dest));
+        
+        //no method yet 
+
+        return true;
     }
     
     function borrowVerify(address vToken, address borrower, uint amount, uint feesAmount, address loanPool) external view override returns(bool){
         //Check if the borrow was successful
         VTokenInterface _vToken = VTokenInterface(vToken);
         (
-            address payable _borrower,
-            address payable _loanPool,
+            address _borrower,
+            address _loanPool,
             uint _amount,
             address _underlying,
             uint _feesAmount,
             uint _feesUsed,
             bool _closed
-        ) = _vToken.getBorrowData(loanPool);
+        ) = _vToken.getBorrowDataStored(loanPool);
         return(borrower == _borrower && amount == _amount && feesAmount == _feesAmount && _closed == false);
     }
     

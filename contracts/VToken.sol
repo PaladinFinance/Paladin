@@ -4,65 +4,31 @@ pragma abicoder v2;
 
 import "./utils/SafeMath.sol";
 import "./VTokenInterface.sol";
+import "./VTokenStorage.sol";
+import "./VTokenERC20.sol";
 import "./vLoanPools/VLoanPoolInterface.sol";
 import "./PaladinControllerInterface.sol";
 import "./InterestInterface.sol";
 import "./utils/IERC20.sol";
-import "./utils/AggregatorV3Interface.sol";
-
 
 //Depending on the pool :
 import "./vLoanPools/VAaveLoanPool.sol";
 
-contract VToken is VTokenInterface {
+
+contract VToken is VTokenERC20, VTokenInterface, VTokenStorage {
     using SafeMath for uint;
-
-    
-    //ERC20 Variables & Mappings
-    string public name;
-    string public symbol;
-    uint public decimals;
-
-    mapping(address => uint) internal balances;
-    mapping(address => mapping (address => uint)) internal transferAllowances;
-
-    //VToken varaibles & Mappings
-    address public underlying;
-
-    bool internal entered = false;
-
-    address payable internal admin;
-
-    uint public totalReserve;
-    uint public totalBorrowed;
-    uint public totalSupply;
-
-    uint internal constant maxBorrowRate = 0; //to change
-    uint internal constant maxReserveFactor = 0; //to change
-
-    uint internal initialExchangeRate;
-    uint public reserveFactor;
-    uint public accrualBlockNumber;
-    uint public borrowIndex;
-
-    uint constant internal mantissaScale = 1e18;
-
-    mapping (address => address[]) internal borrowsByUser;
-    Borrow[] internal borrows;
-    uint internal borrowCount;
-
-
-    //Modules
-    PaladinControllerInterface public controller;
-    InterestInterface internal interestModule;
-
 
     modifier preventReentry() {
         //modifier to prevent reentry in internal functions
-        require(entered, "re-entered");
+        require(!entered);
         entered = true;
         _;
         entered = false;
+    }
+
+    modifier adminOnly() {
+        require(msg.sender == admin);
+        _;
     }
 
     //Functions
@@ -82,94 +48,31 @@ contract VToken is VTokenInterface {
 
         //Set inital values & modules
         controller = PaladinControllerInterface(_controller);
-        underlying = _underlying;
-        borrowCount = 0;
+        underlying = IERC20(_underlying);
         accrualBlockNumber = block.number;
         interestModule = InterestInterface(_interestModule);
-    }
+        borrowIndex = 1e18;
 
-    function transfer(address dest, uint amount) external override returns(bool){
-        return _transfer(msg.sender, dest, msg.sender, amount);
-    }
-
-    function transferFrom(address dest, address src, uint amount) external override returns(bool){
-        return _transfer(msg.sender, dest, src, amount);
-    }
-
-    function _transfer(address spender, address dest, address src, uint amount) internal preventReentry returns(bool){
-        //Check if the transfer is possible
-        require(balances[src] <= amount, "Balance too low");
-        require(dest != src, "Can't do self-transfer ");
-
-        //Update allowance (if the spender send the transaction, allowance is -1)
-        uint oldAllowance = 0;
-        if(src == spender){
-            oldAllowance = uint(-1);
-        }
-        else{
-            oldAllowance = transferAllowances[src][spender];
-        }
-
-        //Check if allowance is enough
-        require(oldAllowance >= amount, "Transfer not allowed");
-
-        //Update balances & allowance
-        balances[src] = balances[src].sub(amount);
-        balances[dest] = balances[dest].add(amount);
-        uint newAllowance = oldAllowance.sub(amount);
-        if(oldAllowance != uint(-1)){
-            transferAllowances[src][spender] = newAllowance;
-        }
-
-        //emit the Transfer Event
-        emit Transfer(src,dest,amount);
-        return true;
-    }
-
-    function approve(address spender, uint amount) external override returns(bool){
-        address src = msg.sender;
-        //Update allowance and emit the Approval event
-        transferAllowances[src][spender] = amount;
-        emit Approval(src, spender, amount);
-        return true;
-    }
-
-    function allowance(address owner, address spender) external view override returns(uint){
-        return transferAllowances[owner][spender];
-    }
-
-    function balanceOf(address owner) external view override returns(uint){
-        return balances[owner];
+        totalSupply = 0;
+        totalBorrowed = 0;
+        totalReserve = 0;
     }
 
     function _underlyingBalance() public view returns(uint){
         //Return the balance of this contract for the underlying asset
-        IERC20 _underlying = IERC20(underlying);
-        return _underlying.balanceOf(address(this));
+        return underlying.balanceOf(address(this));
     }
     
 
-
-
-    function deposit(uint amount) external override returns(uint){
-        _updateInterest();
-        return _mint(msg.sender, amount);
-    }
-
-    function _mint(address dest, uint amount) internal preventReentry returns(uint){
-        //Need the market to be fresh
-        require(accrualBlockNumber == block.number, "Market update failed");
+    function deposit(uint amount) external override preventReentry returns(uint){
+        require(_updateInterest());
 
         //Retrieve the current exchange rate vToken:underlying
         uint _exchRate = _exchangeRate();
 
         //Transfer the underlying to this contract
-        //The amount of underlying needs to be updated approved before
-        IERC20 _token = IERC20(underlying);
-        uint _previousBalance = _token.balanceOf(address(this));
-        _token.transferFrom(dest, address(this), amount);
-        uint _newBalance = _token.balanceOf(address(this));
-        require(_newBalance.sub(_previousBalance) == amount, "Transfer of underlying token failed");
+        //The amount of underlying needs to be approved before
+        underlying.transferFrom(msg.sender, address(this), amount);
 
         //Find the amount to mint depending of the previous transfer
         uint _num = amount.mul(mantissaScale);
@@ -177,53 +80,39 @@ contract VToken is VTokenInterface {
 
         //Mint the vToken : update balances and Supply
         totalSupply = totalSupply.add(_toMint);
-        balances[dest] = balances[dest].add(_toMint);
+        balances[msg.sender] = balances[msg.sender].add(_toMint);
 
         //Emit the Deposit event
-        emit Deposit(dest, amount, address(this));
+        emit Deposit(msg.sender, amount, address(this));
 
         //Use the controller to check if the minting was successfull
-        require(controller.depositVerify(address(this), dest, amount),'Deposit failed');
+        require(controller.depositVerify(address(this), msg.sender, _toMint),'Deposit failed');
 
         return _toMint;
     }
 
-
-
-    
-    function withdraw(uint amount) external override returns(uint){
-        _updateInterest();
-        return _withdraw(msg.sender, amount);
-    }
-
-    function _withdraw(address dest, uint amount) internal preventReentry returns(uint){
-        //Need the market to be fresh
-        require(accrualBlockNumber == block.number, "Market update failed");
+    function withdraw(uint amount) external override preventReentry returns(uint){
+        require(_updateInterest());
 
         //Retrieve the current exchange rate vToken:underlying
         uint _exchRate = _exchangeRate();
-
-        IERC20 _token = IERC20(underlying);
 
         //Find the amount to return depending on the amount of vToken to burn
         uint _num = amount.mul(_exchRate);
         uint _toReturn = _num.div(mantissaScale);
 
         //Check if the pool has enough underlying to return
-        require(_toReturn < _underlyingBalance(), "Not enough funds in the pool");
+        require(_toReturn < _underlyingBalance(), "Balance too low");
 
         //Update the vToken balance & Supply
         totalSupply = totalSupply.sub(_toReturn);
-        balances[dest] = balances[dest].sub(_toReturn);
+        balances[msg.sender] = balances[msg.sender].sub(_toReturn);
 
         //Make the underlying transfer
-        uint _previousBalance = _token.balanceOf(address(this));
-        _token.transfer(dest, _toReturn);
-        uint _newBalance = _token.balanceOf(address(this));
-        require(_previousBalance.sub(_newBalance) == _toReturn, "Transfer of underlying token failed");
+        underlying.transfer(msg.sender, _toReturn);
 
         //Emit the Withdraw event
-        emit Withdraw(dest, amount, address(this));
+        emit Withdraw(msg.sender, amount, address(this));
 
         return _toReturn;
     }
@@ -232,52 +121,129 @@ contract VToken is VTokenInterface {
 
 
     function borrow(uint amount, uint feeAmount) external override returns(uint){
-        _updateInterest();
         return _borrow(msg.sender, amount, feeAmount);
     }
 
-    function _borrow(address dest, uint amount, uint feeAmount) internal preventReentry returns(uint){
-        require(amount < _underlyingBalance(), "Not enough funds in the pool");
-        //TODO
+    function _borrow(address _dest, uint _amount, uint _feeAmount) internal preventReentry returns(uint){
+        require(_amount < _underlyingBalance(), "Pool too low");
+        require(_updateInterest());
+
+        Borrow memory _newBorrow = Borrow(
+            _dest,
+            address(this),
+            _amount,
+            address(underlying),
+            _feeAmount,
+            borrowIndex,
+            false
+        );
+
+        VAaveLoanPool _newLoan = new VAaveLoanPool(
+            address(this),
+            _dest,
+            address(underlying)
+        );
+
+        underlying.transfer(address(_newLoan), _amount);
+
+        underlying.transferFrom(_dest, address(_newLoan), _feeAmount);
+
+        _newLoan.initiate(_amount, _feeAmount);
+
+        totalBorrowed = totalBorrowed.add(_amount);
+        borrows.push(address(_newLoan));
+        loanToBorrow[address(_newLoan)] = _newBorrow;
+        borrowsByUser[_dest].push(address(_newLoan));
+
+        require(controller.borrowVerify(address(this), _dest, _amount, _feeAmount, address(_newLoan)), "Borrow failed");
+
+        emit NewBorrow(_dest, _amount, address(this));
+
+        return _amount;
     }
     
     function expandBorrow(address loanPool, uint feeAmount) external override returns(uint){
-        _updateInterest();
         return _expandBorrow(loanPool, feeAmount);
     }
     
     function killBorrow(address loanPool) external override returns(uint){
-        _updateInterest();
         return _killBorrow(msg.sender, loanPool);
     }
 
     function closeBorrow(address loanPool) external override returns(uint){
-        _updateInterest();
         return _closeBorrow(loanPool);
     }
 
     function _expandBorrow(address loanPool, uint feeAmount) internal preventReentry returns(uint){
-        //TODO
-    }
+        Borrow memory __borrow = loanToBorrow[loanPool];
+        require(!__borrow.closed, 'Loan closed');
+        require(__borrow.borrower == msg.sender, 'Not owner');
+        require(_updateInterest());
+        
+        VLoanPoolInterface _loan = VLoanPoolInterface(__borrow.loanPool);
 
-    function _killBorrow(address killer, address loanPool) internal preventReentry returns(uint){
-        //TODO
+        underlying.transferFrom(__borrow.borrower, __borrow.loanPool, feeAmount);
+
+        bool success = _loan.expand(feeAmount);
+        require(success, "Transfer failed");
+
+        __borrow.feesAmount = __borrow.feesAmount.add(feeAmount);
+
+        loanToBorrow[loanPool]= __borrow;
+
+        return feeAmount;
     }
 
     function _closeBorrow(address loanPool) internal preventReentry returns(uint){
-        //TODO
-    }
-    
+        Borrow memory __borrow = loanToBorrow[loanPool];
+        require(!__borrow.closed, 'Loan closed');
+        require(__borrow.borrower == msg.sender, 'Not owner');
+        require(_updateInterest());
 
+        VLoanPoolInterface _loan = VLoanPoolInterface(__borrow.loanPool);
+
+        uint _feesUsed = __borrow.amount.sub(__borrow.amount.mul(__borrow.borrowIndex).div(borrowIndex));
+        
+        _loan.closeLoan(_feesUsed);
+
+        __borrow.closed = true;
+
+        totalBorrowed = totalBorrowed.sub(__borrow.amount);
+
+        loanToBorrow[loanPool]= __borrow;
+
+        emit CloseLoan(__borrow.borrower, __borrow.amount, address(this));
+
+        return 0;
+    }
+
+    function _killBorrow(address killer, address loanPool) internal preventReentry returns(uint){
+        Borrow memory __borrow = loanToBorrow[loanPool];
+        require(!__borrow.closed, 'Loan closed');
+        require(__borrow.borrower != killer, 'Loan owner');
+        require(_updateInterest());
+
+        uint _feesUsed = __borrow.amount.sub(__borrow.amount.mul(__borrow.borrowIndex).div(borrowIndex));
+        uint _loanHealthFactor = uint(1e18) - _feesUsed.mul(uint(1e18)).div(__borrow.feesAmount);
+        require(_loanHealthFactor <= killFactor, "Not killable");
+
+        VLoanPoolInterface _loan = VLoanPoolInterface(__borrow.loanPool);
+
+        _loan.killLoan(killer, killerRatio);
+
+        __borrow.closed = true;
+
+        totalBorrowed = totalBorrowed.sub(__borrow.amount);
+
+        loanToBorrow[loanPool]= __borrow;
+
+        return 0;
+    }
 
 
     function getLoansPools() external view override returns(address [] memory){
         //Return the addresses of all LoanPools (old ones and active ones)
-        address[] memory pools = new address[](borrowCount);
-        for(uint i = 0; i < borrowCount; i++){
-            pools[i] = borrows[i].loanPool;
-        }
-        return pools;
+        return borrows;
     }
     
     function getLoansByBorrowerStored(address borrower) external view override returns(address [] memory){
@@ -290,8 +256,8 @@ contract VToken is VTokenInterface {
     }
 
     function getBorrowDataStored(address __loanPool) external view override returns(
-        address payable _borrower,
-        address payable _loanPool,
+        address _borrower,
+        address _loanPool,
         uint _amount,
         address _underlying,
         uint _feesAmount,
@@ -302,8 +268,8 @@ contract VToken is VTokenInterface {
     }
 
     function getBorrowData(address __loanPool) external override returns(
-        address payable _borrower,
-        address payable _loanPool,
+        address _borrower,
+        address _loanPool,
         uint _amount,
         address _underlying,
         uint _feesAmount,
@@ -315,8 +281,8 @@ contract VToken is VTokenInterface {
     }
 
     function _getBorrowData(address __loanPool) internal view returns(
-        address payable _borrower,
-        address payable _loanPool,
+        address _borrower,
+        address _loanPool,
         uint _amount,
         address _underlying,
         uint _feesAmount,
@@ -324,21 +290,17 @@ contract VToken is VTokenInterface {
         bool _closed
     ){
         //Return the data inside a Borrow struct
-        for(uint i = 0; i < borrowCount; i++){
-            if(borrows[i].loanPool == __loanPool){
-                Borrow memory __borrow = borrows[i];
-                uint feesUsed = __borrow.amount.sub(__borrow.amount.mul(__borrow.borrowIndex).div(borrowIndex));
-                return (
-                    __borrow.borrower,
-                    __borrow.loanPool,
-                    __borrow.amount,
-                    __borrow.underlying,
-                    __borrow.feesAmount,
-                    feesUsed,
-                    __borrow.closed
-                );
-            }
-        }
+        Borrow memory __borrow = loanToBorrow[__loanPool];
+        return (
+            __borrow.borrower,
+            __borrow.loanPool,
+            __borrow.amount,
+            __borrow.underlying,
+            __borrow.feesAmount,
+            __borrow.amount.sub(__borrow.amount.mul(__borrow.borrowIndex).div(borrowIndex)),
+            __borrow.closed
+        );
+
     }
     
 
@@ -362,54 +324,79 @@ contract VToken is VTokenInterface {
         else{
             uint _cash = _underlyingBalance();
             uint _availableCash = _cash.add(totalBorrowed).sub(totalReserve);
-            uint _exchRate = _availableCash.mul(1e18).div(totalSupply);
-            return _exchRate;
+            return _availableCash.mul(1e18).div(totalSupply);
         }
     }
 
-    function exchangeRateCurrent() external override preventReentry returns (uint){
-        require(_updateInterest());
+    function exchangeRateCurrent() external override returns (uint){
+        _updateInterest();
         return _exchangeRate();
     }
     
     function exchangeRateStored() external view override returns (uint){
         return _exchangeRate();
     }
-    
 
-    function getCash() external view override returns (uint){
-        return _underlyingBalance();
+    function _updateInterest() public returns (bool){
+        uint _currentBlock = block.number;
+        if(_currentBlock == accrualBlockNumber){
+            return true;
+        }
+
+        uint _cash = _underlyingBalance();
+        uint _borrows = totalBorrowed;
+        uint _reserves = totalReserve;
+        uint _oldBorrowIndex = borrowIndex;
+
+        uint _borrowRate = interestModule.getBorrowRate(_cash, _borrows, _reserves);
+
+        uint _ellapsedBlocks = _currentBlock.sub(accrualBlockNumber);
+
+        uint _interestFactor = _borrowRate.mul(_ellapsedBlocks);
+        uint _accumulatedInterest = _interestFactor.mul(_borrows).div(mantissaScale);
+        uint _newBorrows = _borrows.add(_accumulatedInterest);
+        uint _newReserve = _reserves.add(reserveFactor.mul(_accumulatedInterest).div(mantissaScale));
+        uint _newBorrowIndex = _oldBorrowIndex.add(_interestFactor.mul(_oldBorrowIndex).div(mantissaScale));
+
+        totalBorrowed = _newBorrows;
+        totalReserve = _newReserve;
+        borrowIndex = _newBorrowIndex;
+        accrualBlockNumber = _currentBlock;
+
+        return true;
     }
 
-    function _updateInterest() internal returns (bool){
-        //TODO
-    }
     
-    function updateInterest() external override returns (bool){
-        return _updateInterest();
-    }
-    
-
-
 
 
     // Admin Functions
-    function setNewAdmin(address payable _newAdmin) external override {
-        require(msg.sender == admin, "Admin function");
+    function setNewAdmin(address payable _newAdmin) external override adminOnly {
         admin = _newAdmin;
     }
 
-    
-
-    function setNewController(address _newController) external override {
-        require(msg.sender == admin, "Admin function");
+    function setNewController(address _newController) external override adminOnly {
         controller = PaladinControllerInterface(_newController);
     }
-        
 
-    function setNewInterestModule(address _interestModule) external override {
-        require(msg.sender == admin, "Admin function");
+    function setNewInterestModule(address _interestModule) external override adminOnly {
         interestModule = InterestInterface(_interestModule);
+    }
+
+    function addReserve(uint _amount) external override adminOnly {
+        require(_updateInterest());
+
+        underlying.transferFrom(admin, address(this), _amount);
+
+        totalReserve = totalReserve.add(_amount);
+    }
+
+    function removeReserve(uint _amount) external override adminOnly {
+        require(_updateInterest());
+        require(_amount < _underlyingBalance() && _amount < totalReserve);
+
+        underlying.transfer(admin, _amount);
+
+        totalReserve = totalReserve.sub(_amount);
     }
 
 }

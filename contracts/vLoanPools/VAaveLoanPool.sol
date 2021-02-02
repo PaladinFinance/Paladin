@@ -13,15 +13,15 @@ contract VAaveLoanPool is VLoanPoolInterface {
     address public underlying;
     uint public amount;
 
-    address payable public borrower;
+    address public borrower;
     address payable public motherPool;
 
     uint public feesAmount;
 
     //Functions
-    constructor(address payable _motherPool, address payable _borrower, address _underlying){
+    constructor(address _motherPool, address _borrower, address _underlying){
         //Set up initial values
-        motherPool = _motherPool;
+        motherPool = payable(_motherPool);
         borrower = _borrower;
         underlying = _underlying;
     }
@@ -55,19 +55,19 @@ contract VAaveLoanPool is VLoanPoolInterface {
         emit ExpandLoan(borrower, underlying, _newFeesAmount);
     }
 
-    function closeLoan(address _borrower, uint _usedAmount) external override {
+    function closeLoan(uint _usedAmount) external override {
         require(msg.sender == motherPool, "Only the origin Pool can call this function");
-        return _close(_borrower, _usedAmount);
+        return _close(_usedAmount);
     }
 
-    function _close(address _borrower, uint _usedAmount) internal {
+    function _close(uint _usedAmount) internal {
         IERC20 _underlying = IERC20(underlying);
         
         //Return the remaining amount to the borrower
         //Then return the borrowed amount and the used fees to the pool
         uint _returnAmount = feesAmount.sub(_usedAmount);
         uint _keepAmount = amount.add(_usedAmount);
-        _underlying.transfer(_borrower, _returnAmount);
+        _underlying.transfer(borrower, _returnAmount);
         _underlying.transfer(motherPool, _keepAmount);
 
         //Destruct the contract (to get gas refund on the transaction)
@@ -84,7 +84,7 @@ contract VAaveLoanPool is VLoanPoolInterface {
         
         //Send the killer reward to the killer
         //Then return the borrowed amount and the fees to the pool
-        uint _killerAmount = feesAmount.mul(killerRatio).div(100000);
+        uint _killerAmount = feesAmount.mul(killerRatio).div(uint(1e18));
         uint _balance = amount.add(feesAmount);
         uint _poolAmount = _balance.sub(_killerAmount);
         _underlying.transfer(_killer, _killerAmount);
