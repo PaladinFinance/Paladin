@@ -5,6 +5,8 @@ pragma abicoder v2;
 import "./PaladinControllerInterface.sol";
 import "./ERC20Interface.sol";
 
+/** @title vToken Interface  */
+/// @author Paladin - Valentin VIGER
 interface VTokenInterface is ERC20Interface {
 
     //Events

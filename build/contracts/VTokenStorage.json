@@ -106,15 +106,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"accrualBlockNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"borrowIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"controller\",\"outputs\":[{\"internalType\":\"contract PaladinControllerInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"reserveFactor\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalBorrowed\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"underlying\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/valentin/Paladin-Protocol/contracts/VTokenStorage.sol\":\"VTokenStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/valentin/Paladin-Protocol/contracts/ERC20Interface.sol\":{\"keccak256\":\"0x391dcc1b1a38fcc211834c4284e1383caf4354f746194d181b55255c16973de9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ae8f5f64aacf7fd7452a7c72620802d343c3a7e4687a862e0dd420ca817f5d4d\",\"dweb:/ipfs/QmQVFhCZjSRxzYBEN4xqcMbmJuwDdJ5pWRczLRevCup8v4\"]},\"/Users/valentin/Paladin-Protocol/contracts/InterestInterface.sol\":{\"keccak256\":\"0x8e6059de828be07c50085eb7eb76bd6cf9c2b4e3639166200f551652c76b6d69\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ce2e3f735d76a869db859f0b4649198bd7cb06e37616cc06fecac649d27f1b42\",\"dweb:/ipfs/Qmc2YS8pAz6RpatpLDELPK9DKtcKNhMShHkBE236Hv21xB\"]},\"/Users/valentin/Paladin-Protocol/contracts/PaladinControllerInterface.sol\":{\"keccak256\":\"0x2b25b88f231c2084e755005acaad09d48aae1fb60560b9c59cc9a550e0246f87\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://234741bdc47a834fa2c2531f7635359097a807f8b2c76f45cdad986eb9a41fc5\",\"dweb:/ipfs/QmcNF43BSqTXZfwtG2AtBmex2V3cVt4xyeR6tyVc2mKNEG\"]},\"/Users/valentin/Paladin-Protocol/contracts/VTokenInterface.sol\":{\"keccak256\":\"0xd3219fa9980c8de6f299113653e209df58bb5ff27dd934002109079e4194fc6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1854ca088406a6906ec79930391ed561bc132bb464cf6f8cfa6b326ade0f9117\",\"dweb:/ipfs/QmTfsyXG4txRH3LNEdGvZ4kEBLvMR3a1GHfD4Y8NYyZdJ8\"]},\"/Users/valentin/Paladin-Protocol/contracts/VTokenStorage.sol\":{\"keccak256\":\"0x073754b11184959a6c48907d8dc82857e794457bd78f04e83daeb3d38d6567c7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0194e0d05d32b515b3e1a0883fe2e0c36f32ea6ef36af10c1f0149f95dfb97f1\",\"dweb:/ipfs/QmUKg2MmP4wWRABuJuSGiiLHkD2C9kb8cVcATzxYZ7ks1K\"]},\"/Users/valentin/Paladin-Protocol/contracts/utils/IERC20.sol\":{\"keccak256\":\"0x764174622c263c7e5dcded29a69f9119191387d31bb1efee0dcb1e888ce7d93c\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://7d6b1b3356ec509e2c436c593ef55b216e7994bf66620a15d16a6bb48c2a5405\",\"dweb:/ipfs/QmaL7y62TUAdzqeW3GXDpvZarKNFzgGg4J8Seoa3CCkCLX\"]}},\"version\":1}",
-  "bytecode": "0x608060405260008060146101000a81548160ff02191690831515021790555066470de4df8200006005556702c68af0bb14000060065534801561004157600080fd5b5061024d806100516000396000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c80636c540baf1161005b5780636c540baf146101055780636f307dc314610123578063aa5af0fd14610157578063f77c47911461017557610088565b806318160ddd1461008d5780634322b714146100ab5780634c19386c146100c95780634c68df67146100e7575b600080fd5b6100956101a9565b6040518082815260200191505060405180910390f35b6100b36101af565b6040518082815260200191505060405180910390f35b6100d16101b5565b6040518082815260200191505060405180910390f35b6100ef6101bb565b6040518082815260200191505060405180910390f35b61010d6101c1565b6040518082815260200191505060405180910390f35b61012b6101c7565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61015f6101eb565b6040518082815260200191505060405180910390f35b61017d6101f1565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60045481565b60065481565b60035481565b60025481565b60075481565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60085481565b600c60009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea26469706673582212207477c8d16e8b7ea76bdbe21bd615f87ce13b97701bf57b8eb132a4edb0959b2b64736f6c63430007060033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c80636c540baf1161005b5780636c540baf146101055780636f307dc314610123578063aa5af0fd14610157578063f77c47911461017557610088565b806318160ddd1461008d5780634322b714146100ab5780634c19386c146100c95780634c68df67146100e7575b600080fd5b6100956101a9565b6040518082815260200191505060405180910390f35b6100b36101af565b6040518082815260200191505060405180910390f35b6100d16101b5565b6040518082815260200191505060405180910390f35b6100ef6101bb565b6040518082815260200191505060405180910390f35b61010d6101c1565b6040518082815260200191505060405180910390f35b61012b6101c7565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61015f6101eb565b6040518082815260200191505060405180910390f35b61017d6101f1565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60045481565b60065481565b60035481565b60025481565b60075481565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60085481565b600c60009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea26469706673582212207477c8d16e8b7ea76bdbe21bd615f87ce13b97701bf57b8eb132a4edb0959b2b64736f6c63430007060033",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"accrualBlockNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"borrowIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"controller\",\"outputs\":[{\"internalType\":\"contract PaladinControllerInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"reserveFactor\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalBorrowed\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"underlying\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Paladin - Valentin VIGER\",\"kind\":\"dev\",\"methods\":{},\"stateVariables\":{\"admin\":{\"details\":\"Admin address for this Pool \"},\"borrows\":{\"details\":\"List of all borrows (current & closed) \"},\"borrowsByUser\":{\"details\":\"Mapping of all borrow contract address for each user \"},\"entered\":{\"details\":\"Boolean to prevent reentry in some functions \"},\"initialExchangeRate\":{\"details\":\"Base value to mint vTokens \"},\"interestModule\":{\"details\":\"Current Inetrest Module \"},\"killFactor\":{\"details\":\"Healt Factor to kill a loan \"},\"killerRatio\":{\"details\":\"Ratio of the borrow fees to pay the killer of a loan \"},\"loanToBorrow\":{\"details\":\"Mapping of Loan Pool contract address to Borrow struct \"},\"mantissaScale\":{\"details\":\"Scale used to represent decimal values \"},\"maxBorrowRate\":{\"details\":\"Maximum Borrow Rate to update interest \"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"accrualBlockNumber()\":{\"notice\":\"Last block where the interest where updated for this pool \"},\"borrowIndex()\":{\"notice\":\"Borrow Index : increase at each interest update to represent borrows interests increasing \"},\"controller()\":{\"notice\":\"Paladin Controller contract \"},\"reserveFactor()\":{\"notice\":\"Part of the borrows interest to set as Reserves \"},\"totalBorrowed()\":{\"notice\":\"Total of underlying tokens \\\"borrowed\\\" (in Loan Pool contracts) \"},\"totalReserve()\":{\"notice\":\"Total of the current Reserve \"},\"totalSupply()\":{\"notice\":\"Total of vToken in circulation \"},\"underlying()\":{\"notice\":\"Underlying ERC20 token of this Pool \"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/valentin/Paladin-Protocol/contracts/VTokenStorage.sol\":\"VTokenStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/valentin/Paladin-Protocol/contracts/ERC20Interface.sol\":{\"keccak256\":\"0x391dcc1b1a38fcc211834c4284e1383caf4354f746194d181b55255c16973de9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ae8f5f64aacf7fd7452a7c72620802d343c3a7e4687a862e0dd420ca817f5d4d\",\"dweb:/ipfs/QmQVFhCZjSRxzYBEN4xqcMbmJuwDdJ5pWRczLRevCup8v4\"]},\"/Users/valentin/Paladin-Protocol/contracts/InterestInterface.sol\":{\"keccak256\":\"0x10c7a765b51159a0976aaeb6c71f31935a03369930a944bf4eac5463dae5e258\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e247bd980f7b435bc657667e5766031194bec70e27e79a66688ba6897285476a\",\"dweb:/ipfs/QmaiUyhDKE2qhRv9iiQ9ZaU8WsXGx1L3zJDCLq6m2Zb4Sr\"]},\"/Users/valentin/Paladin-Protocol/contracts/PaladinControllerInterface.sol\":{\"keccak256\":\"0xd8b690d8ce898c51bf420febb0b9fe413618b59573f3809f374187e32674dff2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fa4f08b52afd790c99b1abca3ded343d709a72885505d142536624d5eea2bb0d\",\"dweb:/ipfs/QmULP53VVmiHQ6ejn6a4P8P7Jzqgmbm6RHcRmzg7NxXtJm\"]},\"/Users/valentin/Paladin-Protocol/contracts/VTokenInterface.sol\":{\"keccak256\":\"0x12239bbde2b8b2b8f039f3cbbe570c77069e4a9d925e0c9389d8aa7defd92498\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://deac72d750ad2944e8568a0303a653be2470cade125585c907ff8d696b7d70df\",\"dweb:/ipfs/QmUB1zeyoJRqiqbYSYnSCf7VR7RxRQN9McWQ55KvTgcSHv\"]},\"/Users/valentin/Paladin-Protocol/contracts/VTokenStorage.sol\":{\"keccak256\":\"0x8184e23f33b3b71e739e5fc183a0f3d5d850c02721a19953611bcb1318985814\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e6539752b44f382fd28bc70a20e53f3105fd043c1b103e2c301481d1857c97f1\",\"dweb:/ipfs/QmbsnfGWBxJR6ZPYjS93C5RvD8u1HgdrP9C77BWHpWyHid\"]},\"/Users/valentin/Paladin-Protocol/contracts/utils/IERC20.sol\":{\"keccak256\":\"0x764174622c263c7e5dcded29a69f9119191387d31bb1efee0dcb1e888ce7d93c\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://7d6b1b3356ec509e2c436c593ef55b216e7994bf66620a15d16a6bb48c2a5405\",\"dweb:/ipfs/QmaL7y62TUAdzqeW3GXDpvZarKNFzgGg4J8Seoa3CCkCLX\"]}},\"version\":1}",
+  "bytecode": "0x608060405260008060146101000a81548160ff02191690831515021790555066470de4df8200006005556702c68af0bb14000060065534801561004157600080fd5b5061024d806100516000396000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c80636c540baf1161005b5780636c540baf146101055780636f307dc314610123578063aa5af0fd14610157578063f77c47911461017557610088565b806318160ddd1461008d5780634322b714146100ab5780634c19386c146100c95780634c68df67146100e7575b600080fd5b6100956101a9565b6040518082815260200191505060405180910390f35b6100b36101af565b6040518082815260200191505060405180910390f35b6100d16101b5565b6040518082815260200191505060405180910390f35b6100ef6101bb565b6040518082815260200191505060405180910390f35b61010d6101c1565b6040518082815260200191505060405180910390f35b61012b6101c7565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61015f6101eb565b6040518082815260200191505060405180910390f35b61017d6101f1565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60045481565b60065481565b60035481565b60025481565b60075481565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60085481565b600c60009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea26469706673582212209472b457bd99cd9df93faa3b5a7195cd0153fd63437c06e01f867dab921430d264736f6c63430007060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c80636c540baf1161005b5780636c540baf146101055780636f307dc314610123578063aa5af0fd14610157578063f77c47911461017557610088565b806318160ddd1461008d5780634322b714146100ab5780634c19386c146100c95780634c68df67146100e7575b600080fd5b6100956101a9565b6040518082815260200191505060405180910390f35b6100b36101af565b6040518082815260200191505060405180910390f35b6100d16101b5565b6040518082815260200191505060405180910390f35b6100ef6101bb565b6040518082815260200191505060405180910390f35b61010d6101c1565b6040518082815260200191505060405180910390f35b61012b6101c7565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61015f6101eb565b6040518082815260200191505060405180910390f35b61017d6101f1565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60045481565b60065481565b60035481565b60025481565b60075481565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60085481565b600c60009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea26469706673582212209472b457bd99cd9df93faa3b5a7195cd0153fd63437c06e01f867dab921430d264736f6c63430007060033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "195:1080:9:-:0;;;514:5;490:29;;;;;;;;;;;;;;;;;;;;845:7;809:43;;886:6;858:34;;195:1080;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "195:1080:9:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;624:23;;;:::i;:::-;;;;;;;;;;;;;;;;;;;858:34;;;:::i;:::-;;;;;;;;;;;;;;;;;;;593:25;;;:::i;:::-;;;;;;;;;;;;;;;;;;;563:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;898:30;;;:::i;:::-;;;;;;;;;;;;;;;;;;;459:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;934:23;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1176:44;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;624:23;;;;:::o;858:34::-;;;;:::o;593:25::-;;;;:::o;563:24::-;;;;:::o;898:30::-;;;;:::o;459:24::-;;;;;;;;;;;;:::o;934:23::-;;;;:::o;1176:44::-;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.7.6;\n//SPDX-License-Identifier: MIT\n\nimport \"./PaladinControllerInterface.sol\";\nimport \"./InterestInterface.sol\";\nimport \"./VTokenInterface.sol\";\nimport \"./utils/IERC20.sol\";\n\ncontract VTokenStorage {\n\n    struct Borrow {\n        address borrower;\n        address loanPool;\n        uint amount;\n        address underlying;\n        uint feesAmount;\n        uint borrowIndex;\n        bool closed;\n    }\n\n    //VToken variables & Mappings\n    IERC20 public underlying;\n\n    bool internal entered = false;\n\n    address payable internal admin;\n\n    uint public totalReserve;\n    uint public totalBorrowed;\n    uint public totalSupply;\n\n    uint internal constant maxBorrowRate = 0.0002e18;\n\n    uint internal constant killFactor = 0.15e18;\n    uint internal constant killerRatio = 0.98e18;\n\n    uint internal initialExchangeRate = 0.02e18;\n    uint public reserveFactor = 0.2e18;\n    uint public accrualBlockNumber;\n    uint public borrowIndex;\n\n    uint constant internal mantissaScale = 1e18;\n\n    mapping (address => address[]) internal borrowsByUser;\n    mapping (address => Borrow) internal loanToBorrow;\n    address[] internal borrows;\n\n\n    //Modules\n    PaladinControllerInterface public controller;\n    InterestInterface internal interestModule;\n    \n}",
+  "sourceMap": "271:2624:9:-:0;;;1108:5;1084:29;;;;;;;;;;;;;;;;;;;;1874:7;1838:43;;1982:6;1954:34;;271:2624;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "271:2624:9:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1442:23;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1954:34;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1361:25;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1249:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;2071:30;;;:::i;:::-;;;;;;;;;;;;;;;;;;;992:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;2216:23;;;:::i;:::-;;;;;;;;;;;;;;;;;;;2756:44;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;1442:23;;;;:::o;1954:34::-;;;;:::o;1361:25::-;;;;:::o;1249:24::-;;;;:::o;2071:30::-;;;;:::o;992:24::-;;;;;;;;;;;;:::o;2216:23::-;;;;:::o;2756:44::-;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.7.6;\n//SPDX-License-Identifier: MIT\n\nimport \"./PaladinControllerInterface.sol\";\nimport \"./InterestInterface.sol\";\nimport \"./VTokenInterface.sol\";\nimport \"./utils/IERC20.sol\";\n\n/** @title VToken Storage contract  */\n/// @author Paladin - Valentin VIGER\ncontract VTokenStorage {\n\n    /** @notice Struct of a Borrow */\n    struct Borrow {\n        //address of the borrower\n        address borrower;\n        //address of the Loan Pool contract holding the loan\n        address loanPool;\n        //amount of the loan\n        uint amount;\n        //address of the underlying for this loan\n        address underlying;\n        //amount of fees (in the underlying token) paid by the borrower\n        uint feesAmount;\n        //borrow index at the loan creation\n        uint borrowIndex;\n        //true if the loan is active, false is loan was closed or killed\n        bool closed;\n    }\n\n    //VToken variables & Mappings\n\n    /** @notice Underlying ERC20 token of this Pool */\n    IERC20 public underlying;\n\n    /** @dev Boolean to prevent reentry in some functions */\n    bool internal entered = false;\n\n    /** @dev Admin address for this Pool */\n    address payable internal admin;\n\n    /** @notice Total of the current Reserve */\n    uint public totalReserve;\n    /** @notice Total of underlying tokens \"borrowed\" (in Loan Pool contracts) */\n    uint public totalBorrowed;\n    /** @notice Total of vToken in circulation */\n    uint public totalSupply;\n\n    /** @dev Maximum Borrow Rate to update interest */\n    uint internal constant maxBorrowRate = 0.0002e18;\n\n    /** @dev Healt Factor to kill a loan */\n    uint internal constant killFactor = 0.15e18;\n    /** @dev Ratio of the borrow fees to pay the killer of a loan */\n    uint internal constant killerRatio = 0.98e18;\n\n    /** @dev Base value to mint vTokens */\n    uint internal initialExchangeRate = 0.02e18;\n    /** @notice Part of the borrows interest to set as Reserves */\n    uint public reserveFactor = 0.2e18;\n    /** @notice Last block where the interest where updated for this pool */\n    uint public accrualBlockNumber;\n    /** @notice Borrow Index : increase at each interest update to represent borrows interests increasing */\n    uint public borrowIndex;\n\n    /** @dev Scale used to represent decimal values */\n    uint constant internal mantissaScale = 1e18;\n\n    /** @dev Mapping of all borrow contract address for each user */\n    mapping (address => address[]) internal borrowsByUser;\n    /** @dev Mapping of Loan Pool contract address to Borrow struct */\n    mapping (address => Borrow) internal loanToBorrow;\n    /** @dev List of all borrows (current & closed) */\n    address[] internal borrows;\n\n\n    //Modules\n\n    /** @notice Paladin Controller contract */\n    PaladinControllerInterface public controller;\n    /** @dev Current Inetrest Module */\n    InterestInterface internal interestModule;\n    \n}",
   "sourcePath": "/Users/valentin/Paladin-Protocol/contracts/VTokenStorage.sol",
   "ast": {
     "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/VTokenStorage.sol",
@@ -123,27 +123,27 @@
         63
       ],
       "IERC20": [
-        2701
+        2773
       ],
       "InterestInterface": [
-        281
+        293
       ],
       "PaladinControllerInterface": [
-        656
+        663
       ],
       "VTokenInterface": [
-        2426
+        2478
       ],
       "VTokenStorage": [
-        2499
+        2571
       ]
     },
-    "id": 2500,
+    "id": 2572,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2428,
+        "id": 2480,
         "literals": [
           "solidity",
           "^",
@@ -156,10 +156,10 @@
       {
         "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/PaladinControllerInterface.sol",
         "file": "./PaladinControllerInterface.sol",
-        "id": 2429,
+        "id": 2481,
         "nodeType": "ImportDirective",
-        "scope": 2500,
-        "sourceUnit": 657,
+        "scope": 2572,
+        "sourceUnit": 664,
         "src": "56:42:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -167,10 +167,10 @@
       {
         "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/InterestInterface.sol",
         "file": "./InterestInterface.sol",
-        "id": 2430,
+        "id": 2482,
         "nodeType": "ImportDirective",
-        "scope": 2500,
-        "sourceUnit": 282,
+        "scope": 2572,
+        "sourceUnit": 294,
         "src": "99:33:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -178,10 +178,10 @@
       {
         "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/VTokenInterface.sol",
         "file": "./VTokenInterface.sol",
-        "id": 2431,
+        "id": 2483,
         "nodeType": "ImportDirective",
-        "scope": 2500,
-        "sourceUnit": 2427,
+        "scope": 2572,
+        "sourceUnit": 2479,
         "src": "133:31:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -189,10 +189,10 @@
       {
         "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/utils/IERC20.sol",
         "file": "./utils/IERC20.sol",
-        "id": 2432,
+        "id": 2484,
         "nodeType": "ImportDirective",
-        "scope": 2500,
-        "sourceUnit": 2702,
+        "scope": 2572,
+        "sourceUnit": 2774,
         "src": "165:28:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -202,26 +202,32 @@
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
+        "documentation": {
+          "id": 2485,
+          "nodeType": "StructuredDocumentation",
+          "src": "234:37:9",
+          "text": "@author Paladin - Valentin VIGER"
+        },
         "fullyImplemented": true,
-        "id": 2499,
+        "id": 2571,
         "linearizedBaseContracts": [
-          2499
+          2571
         ],
         "name": "VTokenStorage",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "VTokenStorage.Borrow",
-            "id": 2447,
+            "id": 2500,
             "members": [
               {
                 "constant": false,
-                "id": 2434,
+                "id": 2487,
                 "mutability": "mutable",
                 "name": "borrower",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "249:16:9",
+                "scope": 2500,
+                "src": "397:16:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -229,10 +235,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2433,
+                  "id": 2486,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "249:7:9",
+                  "src": "397:7:9",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -243,12 +249,12 @@
               },
               {
                 "constant": false,
-                "id": 2436,
+                "id": 2489,
                 "mutability": "mutable",
                 "name": "loanPool",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "275:16:9",
+                "scope": 2500,
+                "src": "484:16:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -256,10 +262,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2435,
+                  "id": 2488,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "275:7:9",
+                  "src": "484:7:9",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -270,12 +276,12 @@
               },
               {
                 "constant": false,
-                "id": 2438,
+                "id": 2491,
                 "mutability": "mutable",
                 "name": "amount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "301:11:9",
+                "scope": 2500,
+                "src": "539:11:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -283,10 +289,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2437,
+                  "id": 2490,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "301:4:9",
+                  "src": "539:4:9",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -296,12 +302,12 @@
               },
               {
                 "constant": false,
-                "id": 2440,
+                "id": 2493,
                 "mutability": "mutable",
                 "name": "underlying",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "322:18:9",
+                "scope": 2500,
+                "src": "610:18:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -309,10 +315,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2439,
+                  "id": 2492,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "322:7:9",
+                  "src": "610:7:9",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -323,12 +329,12 @@
               },
               {
                 "constant": false,
-                "id": 2442,
+                "id": 2495,
                 "mutability": "mutable",
                 "name": "feesAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "350:15:9",
+                "scope": 2500,
+                "src": "710:15:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -336,10 +342,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2441,
+                  "id": 2494,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "350:4:9",
+                  "src": "710:4:9",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -349,12 +355,12 @@
               },
               {
                 "constant": false,
-                "id": 2444,
+                "id": 2497,
                 "mutability": "mutable",
                 "name": "borrowIndex",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "375:16:9",
+                "scope": 2500,
+                "src": "779:16:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -362,10 +368,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2443,
+                  "id": 2496,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "375:4:9",
+                  "src": "779:4:9",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -375,12 +381,12 @@
               },
               {
                 "constant": false,
-                "id": 2446,
+                "id": 2499,
                 "mutability": "mutable",
                 "name": "closed",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "401:11:9",
+                "scope": 2500,
+                "src": "878:11:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -388,10 +394,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2445,
+                  "id": 2498,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "401:4:9",
+                  "src": "878:4:9",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -402,33 +408,39 @@
             ],
             "name": "Borrow",
             "nodeType": "StructDefinition",
-            "scope": 2499,
-            "src": "225:194:9",
+            "scope": 2571,
+            "src": "339:557:9",
             "visibility": "public"
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2501,
+              "nodeType": "StructuredDocumentation",
+              "src": "937:50:9",
+              "text": "@notice Underlying ERC20 token of this Pool "
+            },
             "functionSelector": "6f307dc3",
-            "id": 2449,
+            "id": 2503,
             "mutability": "mutable",
             "name": "underlying",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "459:24:9",
+            "scope": 2571,
+            "src": "992:24:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IERC20_$2701",
+              "typeIdentifier": "t_contract$_IERC20_$2773",
               "typeString": "contract IERC20"
             },
             "typeName": {
-              "id": 2448,
+              "id": 2502,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2701,
-              "src": "459:6:9",
+              "referencedDeclaration": 2773,
+              "src": "992:6:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$2701",
+                "typeIdentifier": "t_contract$_IERC20_$2773",
                 "typeString": "contract IERC20"
               }
             },
@@ -436,12 +448,18 @@
           },
           {
             "constant": false,
-            "id": 2452,
+            "documentation": {
+              "id": 2504,
+              "nodeType": "StructuredDocumentation",
+              "src": "1023:56:9",
+              "text": "@dev Boolean to prevent reentry in some functions "
+            },
+            "id": 2507,
             "mutability": "mutable",
             "name": "entered",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "490:29:9",
+            "scope": 2571,
+            "src": "1084:29:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -449,10 +467,10 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 2450,
+              "id": 2505,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
-              "src": "490:4:9",
+              "src": "1084:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_bool",
                 "typeString": "bool"
@@ -460,14 +478,14 @@
             },
             "value": {
               "hexValue": "66616c7365",
-              "id": 2451,
+              "id": 2506,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "bool",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "514:5:9",
+              "src": "1108:5:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_bool",
                 "typeString": "bool"
@@ -478,12 +496,18 @@
           },
           {
             "constant": false,
-            "id": 2454,
+            "documentation": {
+              "id": 2508,
+              "nodeType": "StructuredDocumentation",
+              "src": "1120:39:9",
+              "text": "@dev Admin address for this Pool "
+            },
+            "id": 2510,
             "mutability": "mutable",
             "name": "admin",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "526:30:9",
+            "scope": 2571,
+            "src": "1164:30:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -491,10 +515,10 @@
               "typeString": "address payable"
             },
             "typeName": {
-              "id": 2453,
+              "id": 2509,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "526:15:9",
+              "src": "1164:15:9",
               "stateMutability": "payable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address_payable",
@@ -505,13 +529,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2511,
+              "nodeType": "StructuredDocumentation",
+              "src": "1201:43:9",
+              "text": "@notice Total of the current Reserve "
+            },
             "functionSelector": "4c68df67",
-            "id": 2456,
+            "id": 2513,
             "mutability": "mutable",
             "name": "totalReserve",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "563:24:9",
+            "scope": 2571,
+            "src": "1249:24:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -519,10 +549,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2455,
+              "id": 2512,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "563:4:9",
+              "src": "1249:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -532,13 +562,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2514,
+              "nodeType": "StructuredDocumentation",
+              "src": "1279:77:9",
+              "text": "@notice Total of underlying tokens \"borrowed\" (in Loan Pool contracts) "
+            },
             "functionSelector": "4c19386c",
-            "id": 2458,
+            "id": 2516,
             "mutability": "mutable",
             "name": "totalBorrowed",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "593:25:9",
+            "scope": 2571,
+            "src": "1361:25:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -546,10 +582,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2457,
+              "id": 2515,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "593:4:9",
+              "src": "1361:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -559,13 +595,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2517,
+              "nodeType": "StructuredDocumentation",
+              "src": "1392:45:9",
+              "text": "@notice Total of vToken in circulation "
+            },
             "functionSelector": "18160ddd",
-            "id": 2460,
+            "id": 2519,
             "mutability": "mutable",
             "name": "totalSupply",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "624:23:9",
+            "scope": 2571,
+            "src": "1442:23:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -573,10 +615,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2459,
+              "id": 2518,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "624:4:9",
+              "src": "1442:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -586,12 +628,18 @@
           },
           {
             "constant": true,
-            "id": 2463,
+            "documentation": {
+              "id": 2520,
+              "nodeType": "StructuredDocumentation",
+              "src": "1472:50:9",
+              "text": "@dev Maximum Borrow Rate to update interest "
+            },
+            "id": 2523,
             "mutability": "constant",
             "name": "maxBorrowRate",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "654:48:9",
+            "scope": 2571,
+            "src": "1527:48:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -599,10 +647,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2461,
+              "id": 2521,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "654:4:9",
+              "src": "1527:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -610,14 +658,14 @@
             },
             "value": {
               "hexValue": "302e30303032653138",
-              "id": 2462,
+              "id": 2522,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "693:9:9",
+              "src": "1566:9:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_200000000000000_by_1",
                 "typeString": "int_const 200000000000000"
@@ -628,12 +676,18 @@
           },
           {
             "constant": true,
-            "id": 2466,
+            "documentation": {
+              "id": 2524,
+              "nodeType": "StructuredDocumentation",
+              "src": "1582:39:9",
+              "text": "@dev Healt Factor to kill a loan "
+            },
+            "id": 2527,
             "mutability": "constant",
             "name": "killFactor",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "709:43:9",
+            "scope": 2571,
+            "src": "1626:43:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -641,10 +695,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2464,
+              "id": 2525,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "709:4:9",
+              "src": "1626:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -652,14 +706,14 @@
             },
             "value": {
               "hexValue": "302e3135653138",
-              "id": 2465,
+              "id": 2526,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "745:7:9",
+              "src": "1662:7:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_150000000000000000_by_1",
                 "typeString": "int_const 150000000000000000"
@@ -670,12 +724,18 @@
           },
           {
             "constant": true,
-            "id": 2469,
+            "documentation": {
+              "id": 2528,
+              "nodeType": "StructuredDocumentation",
+              "src": "1675:64:9",
+              "text": "@dev Ratio of the borrow fees to pay the killer of a loan "
+            },
+            "id": 2531,
             "mutability": "constant",
             "name": "killerRatio",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "758:44:9",
+            "scope": 2571,
+            "src": "1744:44:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -683,10 +743,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2467,
+              "id": 2529,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "758:4:9",
+              "src": "1744:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -694,14 +754,14 @@
             },
             "value": {
               "hexValue": "302e3938653138",
-              "id": 2468,
+              "id": 2530,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "795:7:9",
+              "src": "1781:7:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_980000000000000000_by_1",
                 "typeString": "int_const 980000000000000000"
@@ -712,12 +772,18 @@
           },
           {
             "constant": false,
-            "id": 2472,
+            "documentation": {
+              "id": 2532,
+              "nodeType": "StructuredDocumentation",
+              "src": "1795:38:9",
+              "text": "@dev Base value to mint vTokens "
+            },
+            "id": 2535,
             "mutability": "mutable",
             "name": "initialExchangeRate",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "809:43:9",
+            "scope": 2571,
+            "src": "1838:43:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -725,10 +791,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2470,
+              "id": 2533,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "809:4:9",
+              "src": "1838:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -736,14 +802,14 @@
             },
             "value": {
               "hexValue": "302e3032653138",
-              "id": 2471,
+              "id": 2534,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "845:7:9",
+              "src": "1874:7:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20000000000000000_by_1",
                 "typeString": "int_const 20000000000000000"
@@ -754,13 +820,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2536,
+              "nodeType": "StructuredDocumentation",
+              "src": "1887:62:9",
+              "text": "@notice Part of the borrows interest to set as Reserves "
+            },
             "functionSelector": "4322b714",
-            "id": 2475,
+            "id": 2539,
             "mutability": "mutable",
             "name": "reserveFactor",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "858:34:9",
+            "scope": 2571,
+            "src": "1954:34:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -768,10 +840,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2473,
+              "id": 2537,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "858:4:9",
+              "src": "1954:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -779,14 +851,14 @@
             },
             "value": {
               "hexValue": "302e32653138",
-              "id": 2474,
+              "id": 2538,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "886:6:9",
+              "src": "1982:6:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_200000000000000000_by_1",
                 "typeString": "int_const 200000000000000000"
@@ -797,13 +869,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2540,
+              "nodeType": "StructuredDocumentation",
+              "src": "1994:72:9",
+              "text": "@notice Last block where the interest where updated for this pool "
+            },
             "functionSelector": "6c540baf",
-            "id": 2477,
+            "id": 2542,
             "mutability": "mutable",
             "name": "accrualBlockNumber",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "898:30:9",
+            "scope": 2571,
+            "src": "2071:30:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -811,10 +889,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2476,
+              "id": 2541,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "898:4:9",
+              "src": "2071:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -824,13 +902,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2543,
+              "nodeType": "StructuredDocumentation",
+              "src": "2107:104:9",
+              "text": "@notice Borrow Index : increase at each interest update to represent borrows interests increasing "
+            },
             "functionSelector": "aa5af0fd",
-            "id": 2479,
+            "id": 2545,
             "mutability": "mutable",
             "name": "borrowIndex",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "934:23:9",
+            "scope": 2571,
+            "src": "2216:23:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -838,10 +922,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2478,
+              "id": 2544,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "934:4:9",
+              "src": "2216:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -851,12 +935,18 @@
           },
           {
             "constant": true,
-            "id": 2482,
+            "documentation": {
+              "id": 2546,
+              "nodeType": "StructuredDocumentation",
+              "src": "2246:50:9",
+              "text": "@dev Scale used to represent decimal values "
+            },
+            "id": 2549,
             "mutability": "constant",
             "name": "mantissaScale",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "964:43:9",
+            "scope": 2571,
+            "src": "2301:43:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -864,10 +954,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2480,
+              "id": 2547,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "964:4:9",
+              "src": "2301:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -875,14 +965,14 @@
             },
             "value": {
               "hexValue": "31653138",
-              "id": 2481,
+              "id": 2548,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1003:4:9",
+              "src": "2340:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_1000000000000000000_by_1",
                 "typeString": "int_const 1000000000000000000"
@@ -893,12 +983,18 @@
           },
           {
             "constant": false,
-            "id": 2487,
+            "documentation": {
+              "id": 2550,
+              "nodeType": "StructuredDocumentation",
+              "src": "2351:64:9",
+              "text": "@dev Mapping of all borrow contract address for each user "
+            },
+            "id": 2555,
             "mutability": "mutable",
             "name": "borrowsByUser",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1014:53:9",
+            "scope": 2571,
+            "src": "2420:53:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -906,38 +1002,38 @@
               "typeString": "mapping(address => address[])"
             },
             "typeName": {
-              "id": 2486,
+              "id": 2554,
               "keyType": {
-                "id": 2483,
+                "id": 2551,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "1023:7:9",
+                "src": "2429:7:9",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "1014:30:9",
+              "src": "2420:30:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
                 "typeString": "mapping(address => address[])"
               },
               "valueType": {
                 "baseType": {
-                  "id": 2484,
+                  "id": 2552,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1034:7:9",
+                  "src": "2440:7:9",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
                     "typeString": "address"
                   }
                 },
-                "id": 2485,
+                "id": 2553,
                 "nodeType": "ArrayTypeName",
-                "src": "1034:9:9",
+                "src": "2440:9:9",
                 "typeDescriptions": {
                   "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                   "typeString": "address[]"
@@ -948,44 +1044,50 @@
           },
           {
             "constant": false,
-            "id": 2491,
+            "documentation": {
+              "id": 2556,
+              "nodeType": "StructuredDocumentation",
+              "src": "2479:66:9",
+              "text": "@dev Mapping of Loan Pool contract address to Borrow struct "
+            },
+            "id": 2560,
             "mutability": "mutable",
             "name": "loanToBorrow",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1073:49:9",
+            "scope": 2571,
+            "src": "2550:49:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Borrow_$2447_storage_$",
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Borrow_$2500_storage_$",
               "typeString": "mapping(address => struct VTokenStorage.Borrow)"
             },
             "typeName": {
-              "id": 2490,
+              "id": 2559,
               "keyType": {
-                "id": 2488,
+                "id": 2557,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "1082:7:9",
+                "src": "2559:7:9",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "1073:27:9",
+              "src": "2550:27:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Borrow_$2447_storage_$",
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Borrow_$2500_storage_$",
                 "typeString": "mapping(address => struct VTokenStorage.Borrow)"
               },
               "valueType": {
-                "id": 2489,
+                "id": 2558,
                 "name": "Borrow",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 2447,
-                "src": "1093:6:9",
+                "referencedDeclaration": 2500,
+                "src": "2570:6:9",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Borrow_$2447_storage_ptr",
+                  "typeIdentifier": "t_struct$_Borrow_$2500_storage_ptr",
                   "typeString": "struct VTokenStorage.Borrow"
                 }
               }
@@ -994,12 +1096,18 @@
           },
           {
             "constant": false,
-            "id": 2494,
+            "documentation": {
+              "id": 2561,
+              "nodeType": "StructuredDocumentation",
+              "src": "2605:50:9",
+              "text": "@dev List of all borrows (current & closed) "
+            },
+            "id": 2564,
             "mutability": "mutable",
             "name": "borrows",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1128:26:9",
+            "scope": 2571,
+            "src": "2660:26:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1008,19 +1116,19 @@
             },
             "typeName": {
               "baseType": {
-                "id": 2492,
+                "id": 2562,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "1128:7:9",
+                "src": "2660:7:9",
                 "stateMutability": "nonpayable",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
-              "id": 2493,
+              "id": 2563,
               "nodeType": "ArrayTypeName",
-              "src": "1128:9:9",
+              "src": "2660:9:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                 "typeString": "address[]"
@@ -1030,27 +1138,33 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2565,
+              "nodeType": "StructuredDocumentation",
+              "src": "2709:42:9",
+              "text": "@notice Paladin Controller contract "
+            },
             "functionSelector": "f77c4791",
-            "id": 2496,
+            "id": 2567,
             "mutability": "mutable",
             "name": "controller",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1176:44:9",
+            "scope": 2571,
+            "src": "2756:44:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_PaladinControllerInterface_$656",
+              "typeIdentifier": "t_contract$_PaladinControllerInterface_$663",
               "typeString": "contract PaladinControllerInterface"
             },
             "typeName": {
-              "id": 2495,
+              "id": 2566,
               "name": "PaladinControllerInterface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 656,
-              "src": "1176:26:9",
+              "referencedDeclaration": 663,
+              "src": "2756:26:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PaladinControllerInterface_$656",
+                "typeIdentifier": "t_contract$_PaladinControllerInterface_$663",
                 "typeString": "contract PaladinControllerInterface"
               }
             },
@@ -1058,37 +1172,43 @@
           },
           {
             "constant": false,
-            "id": 2498,
+            "documentation": {
+              "id": 2568,
+              "nodeType": "StructuredDocumentation",
+              "src": "2806:35:9",
+              "text": "@dev Current Inetrest Module "
+            },
+            "id": 2570,
             "mutability": "mutable",
             "name": "interestModule",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1226:41:9",
+            "scope": 2571,
+            "src": "2846:41:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_InterestInterface_$281",
+              "typeIdentifier": "t_contract$_InterestInterface_$293",
               "typeString": "contract InterestInterface"
             },
             "typeName": {
-              "id": 2497,
+              "id": 2569,
               "name": "InterestInterface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 281,
-              "src": "1226:17:9",
+              "referencedDeclaration": 293,
+              "src": "2846:17:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_InterestInterface_$281",
+                "typeIdentifier": "t_contract$_InterestInterface_$293",
                 "typeString": "contract InterestInterface"
               }
             },
             "visibility": "internal"
           }
         ],
-        "scope": 2500,
-        "src": "195:1080:9"
+        "scope": 2572,
+        "src": "271:2624:9"
       }
     ],
-    "src": "0:1275:9"
+    "src": "0:2895:9"
   },
   "legacyAST": {
     "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/VTokenStorage.sol",
@@ -1097,27 +1217,27 @@
         63
       ],
       "IERC20": [
-        2701
+        2773
       ],
       "InterestInterface": [
-        281
+        293
       ],
       "PaladinControllerInterface": [
-        656
+        663
       ],
       "VTokenInterface": [
-        2426
+        2478
       ],
       "VTokenStorage": [
-        2499
+        2571
       ]
     },
-    "id": 2500,
+    "id": 2572,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2428,
+        "id": 2480,
         "literals": [
           "solidity",
           "^",
@@ -1130,10 +1250,10 @@
       {
         "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/PaladinControllerInterface.sol",
         "file": "./PaladinControllerInterface.sol",
-        "id": 2429,
+        "id": 2481,
         "nodeType": "ImportDirective",
-        "scope": 2500,
-        "sourceUnit": 657,
+        "scope": 2572,
+        "sourceUnit": 664,
         "src": "56:42:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1141,10 +1261,10 @@
       {
         "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/InterestInterface.sol",
         "file": "./InterestInterface.sol",
-        "id": 2430,
+        "id": 2482,
         "nodeType": "ImportDirective",
-        "scope": 2500,
-        "sourceUnit": 282,
+        "scope": 2572,
+        "sourceUnit": 294,
         "src": "99:33:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1152,10 +1272,10 @@
       {
         "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/VTokenInterface.sol",
         "file": "./VTokenInterface.sol",
-        "id": 2431,
+        "id": 2483,
         "nodeType": "ImportDirective",
-        "scope": 2500,
-        "sourceUnit": 2427,
+        "scope": 2572,
+        "sourceUnit": 2479,
         "src": "133:31:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1163,10 +1283,10 @@
       {
         "absolutePath": "/Users/valentin/Paladin-Protocol/contracts/utils/IERC20.sol",
         "file": "./utils/IERC20.sol",
-        "id": 2432,
+        "id": 2484,
         "nodeType": "ImportDirective",
-        "scope": 2500,
-        "sourceUnit": 2702,
+        "scope": 2572,
+        "sourceUnit": 2774,
         "src": "165:28:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1176,26 +1296,32 @@
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
+        "documentation": {
+          "id": 2485,
+          "nodeType": "StructuredDocumentation",
+          "src": "234:37:9",
+          "text": "@author Paladin - Valentin VIGER"
+        },
         "fullyImplemented": true,
-        "id": 2499,
+        "id": 2571,
         "linearizedBaseContracts": [
-          2499
+          2571
         ],
         "name": "VTokenStorage",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "VTokenStorage.Borrow",
-            "id": 2447,
+            "id": 2500,
             "members": [
               {
                 "constant": false,
-                "id": 2434,
+                "id": 2487,
                 "mutability": "mutable",
                 "name": "borrower",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "249:16:9",
+                "scope": 2500,
+                "src": "397:16:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1203,10 +1329,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2433,
+                  "id": 2486,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "249:7:9",
+                  "src": "397:7:9",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -1217,12 +1343,12 @@
               },
               {
                 "constant": false,
-                "id": 2436,
+                "id": 2489,
                 "mutability": "mutable",
                 "name": "loanPool",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "275:16:9",
+                "scope": 2500,
+                "src": "484:16:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1230,10 +1356,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2435,
+                  "id": 2488,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "275:7:9",
+                  "src": "484:7:9",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -1244,12 +1370,12 @@
               },
               {
                 "constant": false,
-                "id": 2438,
+                "id": 2491,
                 "mutability": "mutable",
                 "name": "amount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "301:11:9",
+                "scope": 2500,
+                "src": "539:11:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1257,10 +1383,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2437,
+                  "id": 2490,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "301:4:9",
+                  "src": "539:4:9",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1270,12 +1396,12 @@
               },
               {
                 "constant": false,
-                "id": 2440,
+                "id": 2493,
                 "mutability": "mutable",
                 "name": "underlying",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "322:18:9",
+                "scope": 2500,
+                "src": "610:18:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1283,10 +1409,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2439,
+                  "id": 2492,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "322:7:9",
+                  "src": "610:7:9",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -1297,12 +1423,12 @@
               },
               {
                 "constant": false,
-                "id": 2442,
+                "id": 2495,
                 "mutability": "mutable",
                 "name": "feesAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "350:15:9",
+                "scope": 2500,
+                "src": "710:15:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1310,10 +1436,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2441,
+                  "id": 2494,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "350:4:9",
+                  "src": "710:4:9",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1323,12 +1449,12 @@
               },
               {
                 "constant": false,
-                "id": 2444,
+                "id": 2497,
                 "mutability": "mutable",
                 "name": "borrowIndex",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "375:16:9",
+                "scope": 2500,
+                "src": "779:16:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1336,10 +1462,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2443,
+                  "id": 2496,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "375:4:9",
+                  "src": "779:4:9",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1349,12 +1475,12 @@
               },
               {
                 "constant": false,
-                "id": 2446,
+                "id": 2499,
                 "mutability": "mutable",
                 "name": "closed",
                 "nodeType": "VariableDeclaration",
-                "scope": 2447,
-                "src": "401:11:9",
+                "scope": 2500,
+                "src": "878:11:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1362,10 +1488,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2445,
+                  "id": 2498,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "401:4:9",
+                  "src": "878:4:9",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -1376,33 +1502,39 @@
             ],
             "name": "Borrow",
             "nodeType": "StructDefinition",
-            "scope": 2499,
-            "src": "225:194:9",
+            "scope": 2571,
+            "src": "339:557:9",
             "visibility": "public"
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2501,
+              "nodeType": "StructuredDocumentation",
+              "src": "937:50:9",
+              "text": "@notice Underlying ERC20 token of this Pool "
+            },
             "functionSelector": "6f307dc3",
-            "id": 2449,
+            "id": 2503,
             "mutability": "mutable",
             "name": "underlying",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "459:24:9",
+            "scope": 2571,
+            "src": "992:24:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IERC20_$2701",
+              "typeIdentifier": "t_contract$_IERC20_$2773",
               "typeString": "contract IERC20"
             },
             "typeName": {
-              "id": 2448,
+              "id": 2502,
               "name": "IERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2701,
-              "src": "459:6:9",
+              "referencedDeclaration": 2773,
+              "src": "992:6:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC20_$2701",
+                "typeIdentifier": "t_contract$_IERC20_$2773",
                 "typeString": "contract IERC20"
               }
             },
@@ -1410,12 +1542,18 @@
           },
           {
             "constant": false,
-            "id": 2452,
+            "documentation": {
+              "id": 2504,
+              "nodeType": "StructuredDocumentation",
+              "src": "1023:56:9",
+              "text": "@dev Boolean to prevent reentry in some functions "
+            },
+            "id": 2507,
             "mutability": "mutable",
             "name": "entered",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "490:29:9",
+            "scope": 2571,
+            "src": "1084:29:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1423,10 +1561,10 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 2450,
+              "id": 2505,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
-              "src": "490:4:9",
+              "src": "1084:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_bool",
                 "typeString": "bool"
@@ -1434,14 +1572,14 @@
             },
             "value": {
               "hexValue": "66616c7365",
-              "id": 2451,
+              "id": 2506,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "bool",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "514:5:9",
+              "src": "1108:5:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_bool",
                 "typeString": "bool"
@@ -1452,12 +1590,18 @@
           },
           {
             "constant": false,
-            "id": 2454,
+            "documentation": {
+              "id": 2508,
+              "nodeType": "StructuredDocumentation",
+              "src": "1120:39:9",
+              "text": "@dev Admin address for this Pool "
+            },
+            "id": 2510,
             "mutability": "mutable",
             "name": "admin",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "526:30:9",
+            "scope": 2571,
+            "src": "1164:30:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1465,10 +1609,10 @@
               "typeString": "address payable"
             },
             "typeName": {
-              "id": 2453,
+              "id": 2509,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "526:15:9",
+              "src": "1164:15:9",
               "stateMutability": "payable",
               "typeDescriptions": {
                 "typeIdentifier": "t_address_payable",
@@ -1479,13 +1623,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2511,
+              "nodeType": "StructuredDocumentation",
+              "src": "1201:43:9",
+              "text": "@notice Total of the current Reserve "
+            },
             "functionSelector": "4c68df67",
-            "id": 2456,
+            "id": 2513,
             "mutability": "mutable",
             "name": "totalReserve",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "563:24:9",
+            "scope": 2571,
+            "src": "1249:24:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1493,10 +1643,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2455,
+              "id": 2512,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "563:4:9",
+              "src": "1249:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1506,13 +1656,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2514,
+              "nodeType": "StructuredDocumentation",
+              "src": "1279:77:9",
+              "text": "@notice Total of underlying tokens \"borrowed\" (in Loan Pool contracts) "
+            },
             "functionSelector": "4c19386c",
-            "id": 2458,
+            "id": 2516,
             "mutability": "mutable",
             "name": "totalBorrowed",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "593:25:9",
+            "scope": 2571,
+            "src": "1361:25:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1520,10 +1676,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2457,
+              "id": 2515,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "593:4:9",
+              "src": "1361:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1533,13 +1689,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2517,
+              "nodeType": "StructuredDocumentation",
+              "src": "1392:45:9",
+              "text": "@notice Total of vToken in circulation "
+            },
             "functionSelector": "18160ddd",
-            "id": 2460,
+            "id": 2519,
             "mutability": "mutable",
             "name": "totalSupply",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "624:23:9",
+            "scope": 2571,
+            "src": "1442:23:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1547,10 +1709,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2459,
+              "id": 2518,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "624:4:9",
+              "src": "1442:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1560,12 +1722,18 @@
           },
           {
             "constant": true,
-            "id": 2463,
+            "documentation": {
+              "id": 2520,
+              "nodeType": "StructuredDocumentation",
+              "src": "1472:50:9",
+              "text": "@dev Maximum Borrow Rate to update interest "
+            },
+            "id": 2523,
             "mutability": "constant",
             "name": "maxBorrowRate",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "654:48:9",
+            "scope": 2571,
+            "src": "1527:48:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1573,10 +1741,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2461,
+              "id": 2521,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "654:4:9",
+              "src": "1527:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1584,14 +1752,14 @@
             },
             "value": {
               "hexValue": "302e30303032653138",
-              "id": 2462,
+              "id": 2522,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "693:9:9",
+              "src": "1566:9:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_200000000000000_by_1",
                 "typeString": "int_const 200000000000000"
@@ -1602,12 +1770,18 @@
           },
           {
             "constant": true,
-            "id": 2466,
+            "documentation": {
+              "id": 2524,
+              "nodeType": "StructuredDocumentation",
+              "src": "1582:39:9",
+              "text": "@dev Healt Factor to kill a loan "
+            },
+            "id": 2527,
             "mutability": "constant",
             "name": "killFactor",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "709:43:9",
+            "scope": 2571,
+            "src": "1626:43:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1615,10 +1789,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2464,
+              "id": 2525,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "709:4:9",
+              "src": "1626:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1626,14 +1800,14 @@
             },
             "value": {
               "hexValue": "302e3135653138",
-              "id": 2465,
+              "id": 2526,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "745:7:9",
+              "src": "1662:7:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_150000000000000000_by_1",
                 "typeString": "int_const 150000000000000000"
@@ -1644,12 +1818,18 @@
           },
           {
             "constant": true,
-            "id": 2469,
+            "documentation": {
+              "id": 2528,
+              "nodeType": "StructuredDocumentation",
+              "src": "1675:64:9",
+              "text": "@dev Ratio of the borrow fees to pay the killer of a loan "
+            },
+            "id": 2531,
             "mutability": "constant",
             "name": "killerRatio",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "758:44:9",
+            "scope": 2571,
+            "src": "1744:44:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1657,10 +1837,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2467,
+              "id": 2529,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "758:4:9",
+              "src": "1744:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1668,14 +1848,14 @@
             },
             "value": {
               "hexValue": "302e3938653138",
-              "id": 2468,
+              "id": 2530,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "795:7:9",
+              "src": "1781:7:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_980000000000000000_by_1",
                 "typeString": "int_const 980000000000000000"
@@ -1686,12 +1866,18 @@
           },
           {
             "constant": false,
-            "id": 2472,
+            "documentation": {
+              "id": 2532,
+              "nodeType": "StructuredDocumentation",
+              "src": "1795:38:9",
+              "text": "@dev Base value to mint vTokens "
+            },
+            "id": 2535,
             "mutability": "mutable",
             "name": "initialExchangeRate",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "809:43:9",
+            "scope": 2571,
+            "src": "1838:43:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1699,10 +1885,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2470,
+              "id": 2533,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "809:4:9",
+              "src": "1838:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1710,14 +1896,14 @@
             },
             "value": {
               "hexValue": "302e3032653138",
-              "id": 2471,
+              "id": 2534,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "845:7:9",
+              "src": "1874:7:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20000000000000000_by_1",
                 "typeString": "int_const 20000000000000000"
@@ -1728,13 +1914,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2536,
+              "nodeType": "StructuredDocumentation",
+              "src": "1887:62:9",
+              "text": "@notice Part of the borrows interest to set as Reserves "
+            },
             "functionSelector": "4322b714",
-            "id": 2475,
+            "id": 2539,
             "mutability": "mutable",
             "name": "reserveFactor",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "858:34:9",
+            "scope": 2571,
+            "src": "1954:34:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1742,10 +1934,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2473,
+              "id": 2537,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "858:4:9",
+              "src": "1954:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1753,14 +1945,14 @@
             },
             "value": {
               "hexValue": "302e32653138",
-              "id": 2474,
+              "id": 2538,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "886:6:9",
+              "src": "1982:6:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_200000000000000000_by_1",
                 "typeString": "int_const 200000000000000000"
@@ -1771,13 +1963,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2540,
+              "nodeType": "StructuredDocumentation",
+              "src": "1994:72:9",
+              "text": "@notice Last block where the interest where updated for this pool "
+            },
             "functionSelector": "6c540baf",
-            "id": 2477,
+            "id": 2542,
             "mutability": "mutable",
             "name": "accrualBlockNumber",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "898:30:9",
+            "scope": 2571,
+            "src": "2071:30:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1785,10 +1983,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2476,
+              "id": 2541,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "898:4:9",
+              "src": "2071:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1798,13 +1996,19 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2543,
+              "nodeType": "StructuredDocumentation",
+              "src": "2107:104:9",
+              "text": "@notice Borrow Index : increase at each interest update to represent borrows interests increasing "
+            },
             "functionSelector": "aa5af0fd",
-            "id": 2479,
+            "id": 2545,
             "mutability": "mutable",
             "name": "borrowIndex",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "934:23:9",
+            "scope": 2571,
+            "src": "2216:23:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1812,10 +2016,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2478,
+              "id": 2544,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "934:4:9",
+              "src": "2216:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1825,12 +2029,18 @@
           },
           {
             "constant": true,
-            "id": 2482,
+            "documentation": {
+              "id": 2546,
+              "nodeType": "StructuredDocumentation",
+              "src": "2246:50:9",
+              "text": "@dev Scale used to represent decimal values "
+            },
+            "id": 2549,
             "mutability": "constant",
             "name": "mantissaScale",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "964:43:9",
+            "scope": 2571,
+            "src": "2301:43:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1838,10 +2048,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2480,
+              "id": 2547,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "964:4:9",
+              "src": "2301:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1849,14 +2059,14 @@
             },
             "value": {
               "hexValue": "31653138",
-              "id": 2481,
+              "id": 2548,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1003:4:9",
+              "src": "2340:4:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_1000000000000000000_by_1",
                 "typeString": "int_const 1000000000000000000"
@@ -1867,12 +2077,18 @@
           },
           {
             "constant": false,
-            "id": 2487,
+            "documentation": {
+              "id": 2550,
+              "nodeType": "StructuredDocumentation",
+              "src": "2351:64:9",
+              "text": "@dev Mapping of all borrow contract address for each user "
+            },
+            "id": 2555,
             "mutability": "mutable",
             "name": "borrowsByUser",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1014:53:9",
+            "scope": 2571,
+            "src": "2420:53:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1880,38 +2096,38 @@
               "typeString": "mapping(address => address[])"
             },
             "typeName": {
-              "id": 2486,
+              "id": 2554,
               "keyType": {
-                "id": 2483,
+                "id": 2551,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "1023:7:9",
+                "src": "2429:7:9",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "1014:30:9",
+              "src": "2420:30:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
                 "typeString": "mapping(address => address[])"
               },
               "valueType": {
                 "baseType": {
-                  "id": 2484,
+                  "id": 2552,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1034:7:9",
+                  "src": "2440:7:9",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
                     "typeString": "address"
                   }
                 },
-                "id": 2485,
+                "id": 2553,
                 "nodeType": "ArrayTypeName",
-                "src": "1034:9:9",
+                "src": "2440:9:9",
                 "typeDescriptions": {
                   "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                   "typeString": "address[]"
@@ -1922,44 +2138,50 @@
           },
           {
             "constant": false,
-            "id": 2491,
+            "documentation": {
+              "id": 2556,
+              "nodeType": "StructuredDocumentation",
+              "src": "2479:66:9",
+              "text": "@dev Mapping of Loan Pool contract address to Borrow struct "
+            },
+            "id": 2560,
             "mutability": "mutable",
             "name": "loanToBorrow",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1073:49:9",
+            "scope": 2571,
+            "src": "2550:49:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Borrow_$2447_storage_$",
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Borrow_$2500_storage_$",
               "typeString": "mapping(address => struct VTokenStorage.Borrow)"
             },
             "typeName": {
-              "id": 2490,
+              "id": 2559,
               "keyType": {
-                "id": 2488,
+                "id": 2557,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "1082:7:9",
+                "src": "2559:7:9",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "1073:27:9",
+              "src": "2550:27:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Borrow_$2447_storage_$",
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Borrow_$2500_storage_$",
                 "typeString": "mapping(address => struct VTokenStorage.Borrow)"
               },
               "valueType": {
-                "id": 2489,
+                "id": 2558,
                 "name": "Borrow",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 2447,
-                "src": "1093:6:9",
+                "referencedDeclaration": 2500,
+                "src": "2570:6:9",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Borrow_$2447_storage_ptr",
+                  "typeIdentifier": "t_struct$_Borrow_$2500_storage_ptr",
                   "typeString": "struct VTokenStorage.Borrow"
                 }
               }
@@ -1968,12 +2190,18 @@
           },
           {
             "constant": false,
-            "id": 2494,
+            "documentation": {
+              "id": 2561,
+              "nodeType": "StructuredDocumentation",
+              "src": "2605:50:9",
+              "text": "@dev List of all borrows (current & closed) "
+            },
+            "id": 2564,
             "mutability": "mutable",
             "name": "borrows",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1128:26:9",
+            "scope": 2571,
+            "src": "2660:26:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1982,19 +2210,19 @@
             },
             "typeName": {
               "baseType": {
-                "id": 2492,
+                "id": 2562,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "1128:7:9",
+                "src": "2660:7:9",
                 "stateMutability": "nonpayable",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
-              "id": 2493,
+              "id": 2563,
               "nodeType": "ArrayTypeName",
-              "src": "1128:9:9",
+              "src": "2660:9:9",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                 "typeString": "address[]"
@@ -2004,27 +2232,33 @@
           },
           {
             "constant": false,
+            "documentation": {
+              "id": 2565,
+              "nodeType": "StructuredDocumentation",
+              "src": "2709:42:9",
+              "text": "@notice Paladin Controller contract "
+            },
             "functionSelector": "f77c4791",
-            "id": 2496,
+            "id": 2567,
             "mutability": "mutable",
             "name": "controller",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1176:44:9",
+            "scope": 2571,
+            "src": "2756:44:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_PaladinControllerInterface_$656",
+              "typeIdentifier": "t_contract$_PaladinControllerInterface_$663",
               "typeString": "contract PaladinControllerInterface"
             },
             "typeName": {
-              "id": 2495,
+              "id": 2566,
               "name": "PaladinControllerInterface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 656,
-              "src": "1176:26:9",
+              "referencedDeclaration": 663,
+              "src": "2756:26:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PaladinControllerInterface_$656",
+                "typeIdentifier": "t_contract$_PaladinControllerInterface_$663",
                 "typeString": "contract PaladinControllerInterface"
               }
             },
@@ -2032,37 +2266,43 @@
           },
           {
             "constant": false,
-            "id": 2498,
+            "documentation": {
+              "id": 2568,
+              "nodeType": "StructuredDocumentation",
+              "src": "2806:35:9",
+              "text": "@dev Current Inetrest Module "
+            },
+            "id": 2570,
             "mutability": "mutable",
             "name": "interestModule",
             "nodeType": "VariableDeclaration",
-            "scope": 2499,
-            "src": "1226:41:9",
+            "scope": 2571,
+            "src": "2846:41:9",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_InterestInterface_$281",
+              "typeIdentifier": "t_contract$_InterestInterface_$293",
               "typeString": "contract InterestInterface"
             },
             "typeName": {
-              "id": 2497,
+              "id": 2569,
               "name": "InterestInterface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 281,
-              "src": "1226:17:9",
+              "referencedDeclaration": 293,
+              "src": "2846:17:9",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_InterestInterface_$281",
+                "typeIdentifier": "t_contract$_InterestInterface_$293",
                 "typeString": "contract InterestInterface"
               }
             },
             "visibility": "internal"
           }
         ],
-        "scope": 2500,
-        "src": "195:1080:9"
+        "scope": 2572,
+        "src": "271:2624:9"
       }
     ],
-    "src": "0:1275:9"
+    "src": "0:2895:9"
   },
   "compiler": {
     "name": "solc",
@@ -2070,15 +2310,76 @@
   },
   "networks": {},
   "schemaVersion": "3.3.1",
-  "updatedAt": "2021-02-02T11:52:20.372Z",
+  "updatedAt": "2021-02-03T20:48:08.677Z",
   "devdoc": {
+    "author": "Paladin - Valentin VIGER",
     "kind": "dev",
     "methods": {},
+    "stateVariables": {
+      "admin": {
+        "details": "Admin address for this Pool "
+      },
+      "borrows": {
+        "details": "List of all borrows (current & closed) "
+      },
+      "borrowsByUser": {
+        "details": "Mapping of all borrow contract address for each user "
+      },
+      "entered": {
+        "details": "Boolean to prevent reentry in some functions "
+      },
+      "initialExchangeRate": {
+        "details": "Base value to mint vTokens "
+      },
+      "interestModule": {
+        "details": "Current Inetrest Module "
+      },
+      "killFactor": {
+        "details": "Healt Factor to kill a loan "
+      },
+      "killerRatio": {
+        "details": "Ratio of the borrow fees to pay the killer of a loan "
+      },
+      "loanToBorrow": {
+        "details": "Mapping of Loan Pool contract address to Borrow struct "
+      },
+      "mantissaScale": {
+        "details": "Scale used to represent decimal values "
+      },
+      "maxBorrowRate": {
+        "details": "Maximum Borrow Rate to update interest "
+      }
+    },
     "version": 1
   },
   "userdoc": {
     "kind": "user",
-    "methods": {},
+    "methods": {
+      "accrualBlockNumber()": {
+        "notice": "Last block where the interest where updated for this pool "
+      },
+      "borrowIndex()": {
+        "notice": "Borrow Index : increase at each interest update to represent borrows interests increasing "
+      },
+      "controller()": {
+        "notice": "Paladin Controller contract "
+      },
+      "reserveFactor()": {
+        "notice": "Part of the borrows interest to set as Reserves "
+      },
+      "totalBorrowed()": {
+        "notice": "Total of underlying tokens \"borrowed\" (in Loan Pool contracts) "
+      },
+      "totalReserve()": {
+        "notice": "Total of the current Reserve "
+      },
+      "totalSupply()": {
+        "notice": "Total of vToken in circulation "
+      },
+      "underlying()": {
+        "notice": "Underlying ERC20 token of this Pool "
+      }
+    },
     "version": 1
   }
 }

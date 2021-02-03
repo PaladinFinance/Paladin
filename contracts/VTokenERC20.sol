@@ -4,17 +4,27 @@ pragma solidity ^0.7.6;
 import "./utils/SafeMath.sol";
 import "./ERC20Interface.sol";
 
-
+/** @title vToken ERC20 contract  */
+/// @author Paladin - Valentin VIGER
 contract VTokenERC20 is ERC20Interface {
     using SafeMath for uint;
 
-    //ERC20 Variables & Mappings
+    //ERC20 Variables & Mappings :
+
+    /** @notice ERC20 token Name */
     string public name;
+    /** @notice ERC20 token Symbol */
     string public symbol;
+    /** @notice ERC20 token Decimals */
     uint public decimals;
 
+    /** @dev Balances for this ERC20 token */
     mapping(address => uint) internal balances;
+    /** @dev Allowances for this ERC20 token, sorted by user */
     mapping(address => mapping (address => uint)) internal transferAllowances;
+
+
+    //Functions : 
 
     function transfer(address dest, uint amount) external override returns(bool){
         return _transfer(msg.sender, dest, msg.sender, amount);
