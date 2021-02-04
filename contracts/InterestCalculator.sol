@@ -14,13 +14,13 @@ contract InterestCalculator is InterestInterface {
     address public admin;
 
     /** @notice base mulitplier for borrow rate */
-    uint public multiplierPerBlock = 0.00000295e18;
+    uint public multiplierPerBlock = 0.0000002998e18;
     /** @notice base borrow rate */
-    uint public baseRatePerBlock = 0.0000243e18;
+    uint public baseRatePerBlock = 0.0000002416e18;
     /** @notice mulitplier for borrow rate for the kink */
-    uint public kinkMultiplierPerBlock = 0.00006337e18;
+    uint public kinkMultiplierPerBlock = 0.0000064021e18;
     /** @notice borrow rate for the kink */
-    uint public kinkBaseRatePerBlock = 0.000046875e18;
+    uint public kinkBaseRatePerBlock = 0.00000048325e18;
     /** @notice  ratio of utilization rate at wihich we use kink_ values*/
     uint public kink = 0.8e18;
 
@@ -89,13 +89,14 @@ contract InterestCalculator is InterestInterface {
         uint _utilRate = utilizationRate(cash, borrows, reserves);
         //If the Utilization Rate is less than the Kink value
         // Borrow Rate = Multiplier * Utilization Rate + Base Rate
-        if(_utilRate <= kink) {
+        if(_utilRate < kink) {
             return _utilRate.mul(multiplierPerBlock).div(1e18).add(baseRatePerBlock);
         }
         //If the Utilization Rate is more than the Kink value
-        // Borrow Rate = Kink Multiplier * Utilization Rate + Kink Rate
+        // Borrow Rate = Kink Multiplier * (Utilization Rate - 0.8) + Kink Rate
         else {
-            return _utilRate.mul(kinkMultiplierPerBlock).div(1e18).add(kinkBaseRatePerBlock);
+            uint _temp = _utilRate.sub(0.8e18);
+            return kinkMultiplierPerBlock.mul(_temp).div(1e18).add(kinkBaseRatePerBlock);
         }
     }
 }
