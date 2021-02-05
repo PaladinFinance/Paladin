@@ -160,10 +160,18 @@ contract VToken is VTokenERC20, VTokenInterface, VTokenStorage {
         require(_amount < _underlyingBalance(), "Pool too low");
         require(_updateInterest());
 
+
+        //Deploy a new Loan Pool contract
+        VAaveLoanPool _newLoan = new VAaveLoanPool(
+            address(this),
+            _dest,
+            address(underlying)
+        );
+
         //Create a new Borrow struct for this new Loan
         Borrow memory _newBorrow = Borrow(
             _dest,
-            address(this),
+            address(_newLoan),
             _amount,
             address(underlying),
             _feeAmount,
@@ -171,12 +179,6 @@ contract VToken is VTokenERC20, VTokenInterface, VTokenStorage {
             false
         );
 
-        //And deploy a new Loan Pool contract
-        VAaveLoanPool _newLoan = new VAaveLoanPool(
-            address(this),
-            _dest,
-            address(underlying)
-        );
 
         //Send the borrowed amount of underlying tokens to the Loan
         underlying.transfer(address(_newLoan), _amount);
